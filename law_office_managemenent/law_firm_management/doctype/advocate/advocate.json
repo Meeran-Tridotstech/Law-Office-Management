@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:bar_council_id",
+ "creation": "2025-08-16 22:57:50.888986",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "advocate_details_section",
+  "advocate_name",
+  "bar_council_id",
+  "specialization",
+  "column_break_vsmm",
+  "experience",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "advocate_details_section",
+   "fieldtype": "Section Break",
+   "label": "Advocate Details"
+  },
+  {
+   "fieldname": "advocate_name",
+   "fieldtype": "Data",
+   "label": "Advocate Name"
+  },
+  {
+   "fieldname": "bar_council_id",
+   "fieldtype": "Data",
+   "label": "Bar Council ID",
+   "unique": 1
+  },
+  {
+   "fieldname": "specialization",
+   "fieldtype": "Select",
+   "label": "Specialization",
+   "options": "\nCivil\nCriminal\nFamily\nCorporate\nProperty"
+  },
+  {
+   "fieldname": "experience",
+   "fieldtype": "Int",
+   "label": "Experience"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDraft\nVerified\nActive\nSuspended\nRetired"
+  },
+  {
+   "fieldname": "column_break_vsmm",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-17 12:15:46.568756",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Advocate",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "advocate_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "advocate_name"
+}

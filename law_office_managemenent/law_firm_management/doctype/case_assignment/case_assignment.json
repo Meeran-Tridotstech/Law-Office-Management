@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "CA-.###",
+ "creation": "2025-08-17 09:25:59.564449",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "case_assignment_section",
+  "case",
+  "advocate",
+  "column_break_ulqq",
+  "assigned_date",
+  "assignment_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "case_assignment_section",
+   "fieldtype": "Section Break",
+   "label": "Case Assignment"
+  },
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "Case"
+  },
+  {
+   "fieldname": "advocate",
+   "fieldtype": "Link",
+   "label": "Advocate",
+   "options": "Advocate"
+  },
+  {
+   "fieldname": "column_break_ulqq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_date",
+   "fieldtype": "Date",
+   "label": "Assigned Date"
+  },
+  {
+   "fieldname": "assignment_status",
+   "fieldtype": "Select",
+   "label": "Assignment Status",
+   "options": "Draft\nAssigned\nIn Progress"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-17 12:20:37.505103",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Case Assignment",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

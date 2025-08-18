@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Invoice Bill-hash",
+ "creation": "2025-08-17 09:47:14.043855",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "billing_payments_section",
+  "case",
+  "client",
+  "advocate",
+  "invoice_date",
+  "fee_type",
+  "column_break_fcba",
+  "amount_billed",
+  "amount_paid",
+  "due_date",
+  "payment_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "billing_payments_section",
+   "fieldtype": "Section Break",
+   "label": "Billing Payments"
+  },
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "Case"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Client"
+  },
+  {
+   "fieldname": "advocate",
+   "fieldtype": "Link",
+   "label": "Advocate",
+   "options": "Advocate"
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date"
+  },
+  {
+   "fieldname": "fee_type",
+   "fieldtype": "Select",
+   "label": "Fee Type",
+   "options": "\nConsultation\nDrafting\nAppearance\nFiling\nMiscellaneous"
+  },
+  {
+   "fieldname": "amount_billed",
+   "fieldtype": "Currency",
+   "label": "Amount Billed"
+  },
+  {
+   "fieldname": "amount_paid",
+   "fieldtype": "Currency",
+   "label": "Amount Paid"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "label": "Payment Status",
+   "options": "\nNot Billed\nSent\nPartially Paid\nPaid\nOverdue"
+  },
+  {
+   "fieldname": "column_break_fcba",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-17 12:30:19.982304",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Case Invoice",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "client"
+}

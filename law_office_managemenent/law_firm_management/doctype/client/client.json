@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "C-.###",
+ "creation": "2025-08-16 17:03:49.463561",
+ "description": "Client Details",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "client_details_section",
+  "photo",
+  "client_name",
+  "client_type",
+  "gender",
+  "date_of_birth",
+  "column_break_zwaa",
+  "company_name",
+  "contact_number",
+  "email",
+  "city",
+  "state",
+  "id_proof_section",
+  "id_proof_number",
+  "column_break_gdal",
+  "id_proof_type",
+  "address_section",
+  "address"
+ ],
+ "fields": [
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Client Name",
+   "placeholder": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo",
+   "width": "100%"
+  },
+  {
+   "fieldname": "client_type",
+   "fieldtype": "Select",
+   "label": "Client Type",
+   "options": "\nIndividual\nCompany",
+   "placeholder": "Choose Client Type"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "\nMale\nFemale\nOther",
+   "placeholder": "Select Gender"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "placeholder": "Ex:DD-MM-YYYY"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "placeholder": "Company Name"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "placeholder": "Contact Number"
+  },
+  {
+   "description": "Ex:example@gmail.com",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "placeholder": "Email"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "placeholder": "Enter Your City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Autocomplete",
+   "label": "State",
+   "options": "\nAndhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChhattisgarh\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJharkhand\nKarnataka\nKerala\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal",
+   "placeholder": "Enter your State"
+  },
+  {
+   "fieldname": "id_proof_type",
+   "fieldtype": "Select",
+   "label": "ID Proof Type",
+   "options": "\nAadhaar\nPassport\nPAN\nDriving License",
+   "placeholder": "Choose Your ID Proof Type"
+  },
+  {
+   "fieldname": "id_proof_number",
+   "fieldtype": "Data",
+   "label": "ID Proof Number",
+   "placeholder": "Enter your ID Number"
+  },
+  {
+   "fieldname": "client_details_section",
+   "fieldtype": "Section Break",
+   "label": "Client Details"
+  },
+  {
+   "fieldname": "column_break_zwaa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "id_proof_section",
+   "fieldtype": "Section Break",
+   "label": "ID Proof"
+  },
+  {
+   "fieldname": "column_break_gdal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  }
+ ],
+ "grid_page_length": 50,
+ "image_field": "photo",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-17 12:17:31.087469",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Client",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "client_name",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "client_name",
+ "track_changes": 1,
+ "track_seen": 1
+}
