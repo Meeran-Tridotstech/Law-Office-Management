@@ -245,3 +245,16 @@ app_license = "mit"
 
 
 
+fixtures = [
+    {"dt": "Role"},
+    {"dt": "Role Profile"},
+    {"dt": "Workflow"},
+    {
+        "dt": "User",
+        "filters": [["name", "in", ["advocatesenior6@gmail.com"]]]
+    },
+    {
+        "dt": "Email Account",
+        "filters": [["email_id", "in", ["advocatesenior6@gmail.com"]]]
+    }
+]

@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "advocate_details_section",
+  "photo",
   "advocate_name",
   "bar_council_id",
   "specialization",
@@ -23,12 +24,15 @@
   {
    "fieldname": "advocate_name",
    "fieldtype": "Data",
-   "label": "Advocate Name"
+   "in_list_view": 1,
+   "label": "Advocate Name",
+   "reqd": 1
   },
   {
    "fieldname": "bar_council_id",
    "fieldtype": "Data",
    "label": "Bar Council ID",
+   "reqd": 1,
    "unique": 1
   },
   {
@@ -46,17 +50,23 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "\nDraft\nVerified\nActive\nSuspended\nRetired"
+   "options": "Draft\nVerified\nActive\nSuspended\nRetired"
   },
   {
    "fieldname": "column_break_vsmm",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo"
   }
  ],
  "grid_page_length": 50,
+ "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-17 12:15:46.568756",
+ "modified": "2025-08-19 16:26:58.203354",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Advocate",

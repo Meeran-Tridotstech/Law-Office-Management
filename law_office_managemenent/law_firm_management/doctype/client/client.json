@@ -20,9 +20,9 @@
   "city",
   "state",
   "id_proof_section",
-  "id_proof_number",
-  "column_break_gdal",
   "id_proof_type",
+  "column_break_gdal",
+  "id_proof_number",
   "address_section",
   "address"
  ],
@@ -102,14 +102,13 @@
    "fieldname": "id_proof_type",
    "fieldtype": "Select",
    "label": "ID Proof Type",
-   "options": "\nAadhaar\nPassport\nPAN\nDriving License",
+   "options": "\nAadhar\nPassport\nPAN\nDriving License",
    "placeholder": "Choose Your ID Proof Type"
   },
   {
    "fieldname": "id_proof_number",
    "fieldtype": "Data",
-   "label": "ID Proof Number",
-   "placeholder": "Enter your ID Number"
+   "label": "ID Proof Number"
   },
   {
    "fieldname": "client_details_section",
@@ -139,7 +138,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-17 12:17:31.087469",
+ "modified": "2025-08-19 15:51:49.452128",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client",

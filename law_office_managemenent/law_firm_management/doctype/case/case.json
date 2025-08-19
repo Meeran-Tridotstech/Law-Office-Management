@@ -57,7 +57,7 @@
    "fieldname": "case_status",
    "fieldtype": "Select",
    "label": "Case Status",
-   "options": "\nDraft\nAssigned\nIn Progress\nJudgment Reserved\nClosed\nArchived"
+   "options": "Draft\nAssigned\nIn Progress\nJudgment Reserved\nClosed\nArchived"
   },
   {
    "fieldname": "filed_date",
@@ -88,7 +88,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-17 12:58:01.574807",
+ "modified": "2025-08-19 12:54:28.588453",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",

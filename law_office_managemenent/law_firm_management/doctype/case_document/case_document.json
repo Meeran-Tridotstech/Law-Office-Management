@@ -66,7 +66,7 @@
    "fieldname": "document_status",
    "fieldtype": "Select",
    "label": "Document Status",
-   "options": "\nDraft\nReviewed\nApproved\nSubmitted to Court"
+   "options": "Draft\nReviewed\nApproved\nSubmitted to Court"
   },
   {
    "fieldname": "column_break_rkfr",
@@ -81,7 +81,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-17 12:24:43.643206",
+ "modified": "2025-08-19 12:58:48.879561",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Document",
