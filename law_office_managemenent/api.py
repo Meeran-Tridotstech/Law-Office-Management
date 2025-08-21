@@ -32,3 +32,23 @@ import frappe
 #         doc.save(ignore_permissions=True)
 
 #     return {"tamil_text": transcript.text}
+
+
+
+######---------------ChatBot Api--------------------------------------------------------------------------
+
+import frappe
+
+@frappe.whitelist()
+def create_record(doctype_name, **kwargs):
+    doc = frappe.new_doc(doctype_name)
+
+    # Loop through kwargs to set values dynamically
+    for key, value in kwargs.items():
+        if key in doc.as_dict():
+            doc.set(key, value)
+
+    doc.insert(ignore_permissions=True)
+    frappe.db.commit()
+    return {"name": doc.name}
+

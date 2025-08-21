@@ -250,34 +250,10 @@ app_include_js = [
 ]
 
 
-fixtures = [
-    # 🔑 User & Roles
-    "User",
-    "Role",
-    "Has Role",
-    "User Permission",
-    "Role Profile",
 
-    # 📑 Customizations
-    "Custom Field",
-    "Property Setter",
 
-    # ⚙️ Workflow
-    "Workflow",
-    "Workflow State",
-    "Workflow Action",
+# Include JS in desk (logged in view)
+app_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]
 
-    # 🖨️ Printing & Reports
-    "Print Format",
-    "Report",
-    "Letter Head",
-
-    # 📂 Files & Communications
-    "File",
-    "Communication",
-    "ToDo",
-
-    # 🔄 System Logs (optional, remove if not needed)
-    # "Activity Log",
-    # "Error Log"
-]
+# If you also want in website
+# web_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]
