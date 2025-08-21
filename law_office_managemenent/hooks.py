@@ -243,4 +243,41 @@ app_license = "mit"
 # }
 
 
+#Payment for Razorpay:
+#--------------------
+app_include_js = [
+    "https://checkout.razorpay.com/v1/checkout.js"
+]
 
+
+fixtures = [
+    # 🔑 User & Roles
+    "User",
+    "Role",
+    "Has Role",
+    "User Permission",
+    "Role Profile",
+
+    # 📑 Customizations
+    "Custom Field",
+    "Property Setter",
+
+    # ⚙️ Workflow
+    "Workflow",
+    "Workflow State",
+    "Workflow Action",
+
+    # 🖨️ Printing & Reports
+    "Print Format",
+    "Report",
+    "Letter Head",
+
+    # 📂 Files & Communications
+    "File",
+    "Communication",
+    "ToDo",
+
+    # 🔄 System Logs (optional, remove if not needed)
+    # "Activity Log",
+    # "Error Log"
+]

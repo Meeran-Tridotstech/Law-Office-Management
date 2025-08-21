@@ -10,10 +10,11 @@
   "photo",
   "advocate_name",
   "bar_council_id",
-  "column_break_vsmm",
+  "column_break_qmyy",
   "specialization",
   "experience",
   "status",
+  "column_break_vsmm",
   "mail_id"
  ],
  "fields": [
@@ -67,13 +68,17 @@
    "fieldname": "mail_id",
    "fieldtype": "Data",
    "label": "Mail Id"
+  },
+  {
+   "fieldname": "column_break_qmyy",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-20 17:47:03.972465",
+ "modified": "2025-08-21 18:29:26.049590",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Advocate",

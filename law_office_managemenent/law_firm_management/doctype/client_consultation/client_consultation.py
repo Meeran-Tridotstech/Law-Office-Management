@@ -1,6 +1,9 @@
 import frappe
 from frappe.model.document import Document
 from frappe.desk.form import assign_to
+import razorpay
+from frappe.utils import nowdate, add_days, format_date
+
 
 class ClientConsultation(Document):
 	def after_insert(doc, method=None):

@@ -1,0 +1,296 @@
+[
+ {
+  "completed_by": "advocatesenior6@gmail.com",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-20 14:13:58.557107",
+  "name": "r0hcb9pdcv",
+  "permitted_roles": [
+   {
+    "parent": "r0hcb9pdcv",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/9876/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Draft"
+ },
+ {
+  "completed_by": "advocatesenior6@gmail.com",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-20 14:16:16.833345",
+  "name": "sboe4lr0kb",
+  "permitted_roles": [
+   {
+    "parent": "sboe4lr0kb",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/9876/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Verified"
+ },
+ {
+  "completed_by": "advocatesenior6@gmail.com",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-20 14:16:25.374403",
+  "name": "sedp7h3tbr",
+  "permitted_roles": [
+   {
+    "parent": "sedp7h3tbr",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/9876/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Active"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-20 14:16:28.073481",
+  "name": "sf8o9bcbcv",
+  "permitted_roles": [
+   {
+    "parent": "sf8o9bcbcv",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/9876/2025",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Suspended"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:44:11.436508",
+  "name": "i52ogfc0hk",
+  "permitted_roles": [
+   {
+    "parent": "i52ogfc0hk",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/4566/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Draft"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:45:12.131454",
+  "name": "io1b3tio7n",
+  "permitted_roles": [
+   {
+    "parent": "io1b3tio7n",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/4566/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Verified"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:45:18.404322",
+  "name": "iq0ipj68ej",
+  "permitted_roles": [
+   {
+    "parent": "iq0ipj68ej",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/4566/2025",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Active"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:53:18.156858",
+  "name": "nft5r49g1c",
+  "permitted_roles": [
+   {
+    "parent": "nft5r49g1c",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2021/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Draft"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:53:52.753350",
+  "name": "nqn0k3n2rv",
+  "permitted_roles": [
+   {
+    "parent": "nqn0k3n2rv",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2018/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Draft"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:54:22.972638",
+  "name": "o45rvcf0q4",
+  "permitted_roles": [
+   {
+    "parent": "o45rvcf0q4",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2018/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Verified"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:54:31.039374",
+  "name": "o6mniuh7pj",
+  "permitted_roles": [
+   {
+    "parent": "o6mniuh7pj",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2021/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Verified"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 12:54:32.955657",
+  "name": "o79ieitcsg",
+  "permitted_roles": [
+   {
+    "parent": "o79ieitcsg",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2021/2025",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Active"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 15:06:21.774506",
+  "name": "5epk68lsom",
+  "permitted_roles": [
+   {
+    "parent": "5epk68lsom",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2018/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Active"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "Senior Advocate",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2025-08-21 15:06:29.681023",
+  "name": "5h8vmdrpbf",
+  "permitted_roles": [
+   {
+    "parent": "5h8vmdrpbf",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "Senior Advocate"
+   }
+  ],
+  "reference_doctype": "Advocate",
+  "reference_name": "TN/2018/2025",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Suspended"
+ }
+]

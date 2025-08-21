@@ -54,19 +54,51 @@ frappe.ui.form.on("Client Consultation", {
                 window.open(frm.doc.meeting_link, "_blank");
             }, "Actions");
         }
+
+        // Show button only if payment_status is not Paid
+        if (frm.doc.consultation_fee && frm.doc.payment_status !== "Paid") {
+            frm.add_custom_button('Pay Consultation Fee', () => {
+
+                let amount_in_paise = frm.doc.consultation_fee * 100;
+
+                let options = {
+                    key: "rzp_test_R7xDdI0dwGlmRA", // replace with your Razorpay key
+                    amount: amount_in_paise,
+                    currency: "INR",
+                    name: frm.doc.client_name || "Demo Client",
+                    description: "Consultation Fee Payment",
+                    handler: function(response) {
+                        // Update payment_status to "Paid" (must match Select options exactly)
+                        frm.set_value("payment_status", "Paid");
+                        frm.set_value("payment_id", response.razorpay_payment_id);
+
+                        frm.save().then(() => {
+                            frappe.msgprint("Payment Successful. Consultation Confirmed!");
+                            frm.reload_doc();
+                        });
+                    },
+                    prefill: {
+                        name: frm.doc.client_name || "Test Client",
+                        email: frm.doc.email || "meeranf36@gmail.com",
+                        contact: frm.doc.mobile || "9344287100"
+                    },
+                    theme: {
+                        color: "#3399cc"
+                    },
+                    modal: {
+                        ondismiss: function () {
+                            frappe.msgprint("You closed the Razorpay popup.");
+                        }
+                    }
+                };
+
+                let rzp = new Razorpay(options);
+                rzp.open();
+            });
+        }
+
+        
     },
-
-
-    // refresh: function(frm) {
-    //     frm.add_custom_button("Generate Google Meet", function() {
-    //         window.open(
-    //             "https://accounts.google.com/o/oauth2/v2/auth?" +
-    //             "client_id=" + frappe.boot.google_client_id +
-    //             "&redirect_uri=http://localhost:8004/api/method/law_office_management.api.auth.google_callback" +
-    //             "&response_type=code&scope=https://www.googleapis.com/auth/calendar.events"
-    //         );
-    //     });
-    // }
 
     
 });

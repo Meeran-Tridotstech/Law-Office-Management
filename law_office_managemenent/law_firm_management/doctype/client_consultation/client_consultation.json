@@ -6,23 +6,23 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "consultation_tab",
   "consultation_section",
   "client_name",
-  "consultation_type",
-  "advocate",
   "case_type",
-  "column_break_bdpc",
-  "status",
+  "advocate",
   "consultation_fee",
-  "date",
-  "payment_status",
-  "column_break_bbpo",
+  "column_break_bdpc",
   "mode_of_consultation",
   "location__address",
-  "meeting_link",
   "whatsapp_number",
+  "meeting_link",
   "preferred_date_1",
   "preferred_date_2",
+  "column_break_lzwo",
+  "status",
+  "payment_status",
+  "payment_id",
   "confirmed_date",
   "summary_section",
   "case_summary"
@@ -55,14 +55,6 @@
    "options": "\nCivil\nCriminal\nProperty\nFamily\nCorporate"
   },
   {
-   "fieldname": "consultation_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Consultation Type",
-   "options": "\nInitial\nFollow-up\nCourt Preparation",
-   "reqd": 1
-  },
-  {
    "fieldname": "mode_of_consultation",
    "fieldtype": "Select",
    "label": "Mode of Consultation",
@@ -76,23 +68,21 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Scheduled\nOngoing\nCompleted\nCancelled"
+   "options": "Scheduled\nCompleted\nCancelled"
   },
   {
+   "default": "100",
    "fieldname": "consultation_fee",
    "fieldtype": "Currency",
-   "label": "Consultation Fee"
-  },
-  {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Date"
+   "label": "Consultation Fee",
+   "read_only": 1
   },
   {
    "fieldname": "payment_status",
    "fieldtype": "Select",
    "label": "Payment Status",
-   "options": "Unpaid\nPartially Paid\nPaid."
+   "options": "Unpaid\nPartially Paid\nPaid",
+   "read_only": 1
   },
   {
    "fieldname": "summary_section",
@@ -103,10 +93,6 @@
    "fieldname": "case_summary",
    "fieldtype": "Small Text",
    "label": "Case Summary"
-  },
-  {
-   "fieldname": "column_break_bbpo",
-   "fieldtype": "Column Break"
   },
   {
    "default": "Porur,Chennai",
@@ -143,12 +129,27 @@
    "fieldtype": "Date",
    "label": "Confirmed Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "payment_id",
+   "fieldtype": "Data",
+   "label": "Payment Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "consultation_tab",
+   "fieldtype": "Tab Break",
+   "label": "<b>CONSULTATION<b></b></b>"
+  },
+  {
+   "fieldname": "column_break_lzwo",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-20 20:16:48.591706",
+ "modified": "2025-08-21 19:36:37.124212",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client Consultation",
