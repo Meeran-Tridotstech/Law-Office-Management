@@ -1,4 +1,4 @@
-import frappe
+# import frappe
 # import openai
 # import tempfile
 # import razorpay
@@ -40,15 +40,34 @@ import frappe
 import frappe
 
 @frappe.whitelist()
-def create_record(doctype_name, **kwargs):
-    doc = frappe.new_doc(doctype_name)
-
-    # Loop through kwargs to set values dynamically
-    for key, value in kwargs.items():
-        if key in doc.as_dict():
-            doc.set(key, value)
-
-    doc.insert(ignore_permissions=True)
+def create_consultation(
+    client_name=None, case_type=None, advocate=None,
+    consultation_fee=None, mode_of_consultation=None, location_address=None,
+    whatsapp_number=None, meeting_link=None,
+    preferred_date_1=None, preferred_date_2=None,
+    status=None, payment_status=None, payment_id=None,
+    confirmed_date=None, case_summary=None
+):
+    doc = frappe.new_doc("Client Consultation")   # replace with your Doctype name
+    doc.client_name = client_name
+    doc.case_type = case_type
+    doc.advocate = advocate
+    doc.consultation_fee = consultation_fee
+    doc.mode_of_consultation = mode_of_consultation
+    doc.location_address = location_address
+    doc.whatsapp_number = whatsapp_number
+    doc.meeting_link = meeting_link
+    doc.preferred_date_1 = preferred_date_1
+    doc.preferred_date_2 = preferred_date_2
+    doc.status = status
+    doc.payment_status = payment_status
+    doc.payment_id = payment_id
+    doc.confirmed_date = confirmed_date
+    doc.case_summary = case_summary
+    doc.insert()
     frappe.db.commit()
-    return {"name": doc.name}
+    return doc.name
+
+
+
 

@@ -1,0 +1,263 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Case Details",
+ "creation": "2025-08-22 12:11:42.994868",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "client_details_tab",
+  "section_break_itzf",
+  "client_id",
+  "client_name",
+  "client_type",
+  "status",
+  "column_break_yiub",
+  "gender",
+  "date_of_birth",
+  "company_name",
+  "contact_number",
+  "column_break_ydxb",
+  "city",
+  "state",
+  "amended_from",
+  "case_details_tab",
+  "case_details_section",
+  "case_title",
+  "case_number",
+  "case_type",
+  "case_status",
+  "column_break_kxrq",
+  "filed_date",
+  "court_name",
+  "opponent_name",
+  "description_section",
+  "description",
+  "case_proceedings_tab",
+  "case_proceedings_section",
+  "table_hvaz",
+  "tab_2_tab",
+  "case_documents_section",
+  "document"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_itzf",
+   "fieldtype": "Section Break",
+   "label": "Client Details"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Link",
+   "label": "Client ID",
+   "options": "Client"
+  },
+  {
+   "fetch_from": "client_id.client_name",
+   "fieldname": "client_name",
+   "fieldtype": "Read Only",
+   "label": "Client Name"
+  },
+  {
+   "fetch_from": "client_id.client_type",
+   "fieldname": "client_type",
+   "fieldtype": "Read Only",
+   "label": "Client Type"
+  },
+  {
+   "fetch_from": "client_id.gender",
+   "fieldname": "gender",
+   "fieldtype": "Read Only",
+   "label": "Gender"
+  },
+  {
+   "fetch_from": "client_id.date_of_birth",
+   "fieldname": "date_of_birth",
+   "fieldtype": "Read Only",
+   "label": "Date of Birth"
+  },
+  {
+   "fetch_from": "client_id.company_name",
+   "fieldname": "company_name",
+   "fieldtype": "Read Only",
+   "label": "Company Name"
+  },
+  {
+   "fetch_from": "client_id.contact_number",
+   "fieldname": "contact_number",
+   "fieldtype": "Read Only",
+   "label": "Contact Number"
+  },
+  {
+   "fetch_from": "client_id.city",
+   "fieldname": "city",
+   "fieldtype": "Read Only",
+   "label": "City"
+  },
+  {
+   "fetch_from": "client_id.state",
+   "fieldname": "state",
+   "fieldtype": "Read Only",
+   "label": "State"
+  },
+  {
+   "fieldname": "column_break_yiub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ydxb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Case Details",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "client_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Client Details"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Case Documents"
+  },
+  {
+   "fieldname": "case_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Case Documents"
+  },
+  {
+   "columns": 4,
+   "fieldname": "document",
+   "fieldtype": "Table",
+   "label": "Document",
+   "options": "Case Document"
+  },
+  {
+   "columns": 3,
+   "fieldname": "case_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Case Details"
+  },
+  {
+   "fieldname": "case_details_section",
+   "fieldtype": "Section Break",
+   "label": "Case Details"
+  },
+  {
+   "fieldname": "case_title",
+   "fieldtype": "Link",
+   "label": "Case Title",
+   "options": "Case"
+  },
+  {
+   "fetch_from": "case_title.case_number",
+   "fieldname": "case_number",
+   "fieldtype": "Read Only",
+   "label": "Case Number"
+  },
+  {
+   "fetch_from": "case_title.case_type",
+   "fieldname": "case_type",
+   "fieldtype": "Read Only",
+   "label": "Case Type"
+  },
+  {
+   "fetch_from": "case_title.case_status",
+   "fieldname": "case_status",
+   "fieldtype": "Read Only",
+   "label": "Case Status"
+  },
+  {
+   "fetch_from": "case_title.filed_date",
+   "fieldname": "filed_date",
+   "fieldtype": "Read Only",
+   "label": "Filed Date"
+  },
+  {
+   "fetch_from": "case_title.court_name",
+   "fieldname": "court_name",
+   "fieldtype": "Read Only",
+   "label": "Court Name"
+  },
+  {
+   "fetch_from": "case_title.opponent_name",
+   "fieldname": "opponent_name",
+   "fieldtype": "Read Only",
+   "label": "Opponent Name"
+  },
+  {
+   "fieldname": "column_break_kxrq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description_section",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Read Only",
+   "label": "Description"
+  },
+  {
+   "fieldname": "case_proceedings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Case Proceedings"
+  },
+  {
+   "fieldname": "case_proceedings_section",
+   "fieldtype": "Section Break",
+   "label": "Case Proceedings"
+  },
+  {
+   "fieldname": "table_hvaz",
+   "fieldtype": "Table",
+   "label": "Case Proceedings",
+   "options": "Case Proceedings"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Draft\nFiled\nHearing Scheduled\nUnder Trial\nJudgement Pending\nClosed"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-08-22 19:37:14.479799",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Case Details",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

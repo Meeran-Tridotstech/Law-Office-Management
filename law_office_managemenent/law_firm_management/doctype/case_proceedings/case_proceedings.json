@@ -4,6 +4,7 @@
  "autoname": "CP-.###",
  "creation": "2025-08-17 09:35:32.471033",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "case_proceedings_section",
@@ -22,27 +23,31 @@
   {
    "fieldname": "case_proceedings_section",
    "fieldtype": "Section Break",
-   "label": "Case Proceedings "
+   "label": "Case Proceedings"
   },
   {
    "fieldname": "case",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Case",
    "options": "Case"
   },
   {
    "fieldname": "proceeding_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Proceeding Date"
   },
   {
    "fieldname": "court_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Court Name"
   },
   {
    "fieldname": "judge_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Judge Name"
   },
   {
@@ -52,17 +57,20 @@
   {
    "fieldname": "hearing_stage",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Hearing Stage",
    "options": "\nFiling\nHearing\nEvidence\nCross Examination\nJudgment"
   },
   {
    "fieldname": "next_hearing_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Next Hearing Date"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
    "options": "\nPending\nCompleted\nAdjourned"
   },
@@ -74,32 +82,21 @@
   {
    "fieldname": "notes__description",
    "fieldtype": "Text",
+   "in_list_view": 1,
    "label": "Notes / Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "istable": 1,
  "links": [],
- "modified": "2025-08-17 12:22:42.758724",
+ "modified": "2025-08-22 17:34:41.366646",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Proceedings",
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  }
- ],
+ "permissions": [],
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",

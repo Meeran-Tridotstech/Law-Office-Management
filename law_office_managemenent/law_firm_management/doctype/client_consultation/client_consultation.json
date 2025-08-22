@@ -81,7 +81,7 @@
    "fieldname": "payment_status",
    "fieldtype": "Select",
    "label": "Payment Status",
-   "options": "Unpaid\nPartially Paid\nPaid",
+   "options": "Unpaid\nPaid",
    "read_only": 1
   },
   {
@@ -149,7 +149,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-21 19:36:37.124212",
+ "modified": "2025-08-22 20:30:15.138948",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client Consultation",

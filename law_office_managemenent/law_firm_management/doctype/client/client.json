@@ -20,6 +20,7 @@
   "city",
   "state",
   "id_proof_section",
+  "column_break_iakd",
   "id_proof_type",
   "column_break_gdal",
   "id_proof_number",
@@ -44,6 +45,7 @@
   {
    "fieldname": "client_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Client Type",
    "options": "\nIndividual\nCompany",
    "placeholder": "Choose Client Type"
@@ -51,6 +53,7 @@
   {
    "fieldname": "gender",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Gender",
    "options": "\nMale\nFemale\nOther",
    "placeholder": "Select Gender"
@@ -58,18 +61,21 @@
   {
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Date of Birth",
    "placeholder": "Ex:DD-MM-YYYY"
   },
   {
    "fieldname": "company_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Company Name",
    "placeholder": "Company Name"
   },
   {
    "fieldname": "contact_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Contact Number",
    "placeholder": "Contact Number"
   },
@@ -77,23 +83,27 @@
    "description": "Ex:example@gmail.com",
    "fieldname": "email",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Email",
    "placeholder": "Email"
   },
   {
    "fieldname": "address",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Address"
   },
   {
    "fieldname": "city",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "City",
    "placeholder": "Enter Your City"
   },
   {
    "fieldname": "state",
    "fieldtype": "Autocomplete",
+   "in_list_view": 1,
    "label": "State",
    "options": "\nAndhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChhattisgarh\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJharkhand\nKarnataka\nKerala\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal",
    "placeholder": "Enter your State"
@@ -108,6 +118,7 @@
   {
    "fieldname": "id_proof_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "ID Proof Number"
   },
   {
@@ -132,13 +143,17 @@
    "fieldname": "address_section",
    "fieldtype": "Section Break",
    "label": "Address"
+  },
+  {
+   "fieldname": "column_break_iakd",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-19 15:51:49.452128",
+ "modified": "2025-08-22 12:32:11.258511",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client",

@@ -247,13 +247,11 @@ app_license = "mit"
 #--------------------
 app_include_js = [
     "https://checkout.razorpay.com/v1/checkout.js"
-]
-
-
+];
 
 
 # Include JS in desk (logged in view)
 app_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]
 
 # If you also want in website
-# web_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]
+web_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]

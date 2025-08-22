@@ -24,23 +24,27 @@
   {
    "fieldname": "case_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Case Title"
   },
   {
    "fieldname": "case_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Case Number",
    "unique": 1
   },
   {
    "fieldname": "client",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Client",
    "options": "Client"
   },
   {
    "fieldname": "case_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Case Type",
    "options": "\nCivil\nCriminal\nFamily\nCorporate\nProperty\nOther"
   },
@@ -56,22 +60,26 @@
   {
    "fieldname": "case_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Case Status",
    "options": "Draft\nAssigned\nIn Progress\nJudgment Reserved\nClosed\nArchived"
   },
   {
    "fieldname": "filed_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Filed Date"
   },
   {
    "fieldname": "court_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Court Name"
   },
   {
    "fieldname": "opponent_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Opponent Name"
   },
   {
@@ -82,13 +90,14 @@
   {
    "fieldname": "case_description",
    "fieldtype": "Text Editor",
+   "in_list_view": 1,
    "label": "Case Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-19 12:54:28.588453",
+ "modified": "2025-08-22 16:27:00.479845",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",

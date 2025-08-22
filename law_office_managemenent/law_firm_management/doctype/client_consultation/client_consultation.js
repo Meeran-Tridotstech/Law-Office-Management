@@ -48,39 +48,34 @@ frappe.ui.form.on("Client Consultation", {
         }
     },
 
-    refresh: function(frm) {
-        if (frm.doc.meeting_link) {
-            frm.add_custom_button("Join Meeting", function() {
-                window.open(frm.doc.meeting_link, "_blank");
-            }, "Actions");
-        }
-
-        // Show button only if payment_status is not Paid
-        if (frm.doc.consultation_fee && frm.doc.payment_status !== "Paid") {
-            frm.add_custom_button('Pay Consultation Fee', () => {
-
-                let amount_in_paise = frm.doc.consultation_fee * 100;
-
+    refresh: function (frm) {
+        // Show "Make Payment" button only if payment_id is not set
+        if (!frm.doc.payment_id) {
+            frm.add_custom_button('Make Payment', () => {
+                let amount_in_paise = frm.doc.total_amount * 100 || 10000;
+ 
                 let options = {
-                    key: "rzp_test_R7xDdI0dwGlmRA", // replace with your Razorpay key
+                    key: "rzp_test_1DP5mmOlF5G5ag",
                     amount: amount_in_paise,
                     currency: "INR",
-                    name: frm.doc.client_name || "Demo Client",
-                    description: "Consultation Fee Payment",
-                    handler: function(response) {
-                        // Update payment_status to "Paid" (must match Select options exactly)
-                        frm.set_value("payment_status", "Paid");
+                    name: frm.doc.passenger || "Demo User",
+                    description: "Airplane Ticket Payment",
+                    handler: function (response) {
+                        // Store payment ID and update status
                         frm.set_value("payment_id", response.razorpay_payment_id);
-
+                        frm.set_value("status", "Booked");
+ 
+                        // Save the form and show message
                         frm.save().then(() => {
-                            frappe.msgprint("Payment Successful. Consultation Confirmed!");
+                            frappe.msgprint("Payment Successful. Ticket Booked!");
+                            // Reload form to remove button
                             frm.reload_doc();
                         });
                     },
                     prefill: {
-                        name: frm.doc.client_name || "Test Client",
-                        email: frm.doc.email || "meeranf36@gmail.com",
-                        contact: frm.doc.mobile || "9344287100"
+                        name: frm.doc.passenger || "Test User",
+                        email: frm.doc.email || "test@example.com",
+                        contact: frm.doc.mobile || "9999999999"
                     },
                     theme: {
                         color: "#3399cc"
@@ -91,14 +86,12 @@ frappe.ui.form.on("Client Consultation", {
                         }
                     }
                 };
-
+ 
                 let rzp = new Razorpay(options);
                 rzp.open();
             });
         }
-
-        
-    },
+    }
 
     
 });
