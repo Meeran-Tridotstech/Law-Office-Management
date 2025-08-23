@@ -247,7 +247,8 @@ app_license = "mit"
 #--------------------
 app_include_js = [
     "https://checkout.razorpay.com/v1/checkout.js"
-];
+]
+
 
 
 # Include JS in desk (logged in view)

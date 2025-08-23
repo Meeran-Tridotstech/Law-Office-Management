@@ -1,21 +1,24 @@
 {
  "actions": [],
- "allow_rename": 1,
- "autoname": "CN-.###",
+ "autoname": "naming_series:naming_series",
  "creation": "2025-08-16 22:34:11.984943",
  "description": "Case Details ",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "case_details_section",
-  "case_title",
-  "case_number",
   "client",
+  "case_title",
   "case_type",
+  "naming_series",
+  "column_break_qyub",
+  "typical_court",
+  "court_name",
+  "court_address",
+  "court_location",
   "column_break_idku",
   "case_status",
   "filed_date",
-  "court_name",
   "opponent_name",
   "case_description_section",
   "case_description"
@@ -23,30 +26,26 @@
  "fields": [
   {
    "fieldname": "case_title",
-   "fieldtype": "Data",
+   "fieldtype": "Autocomplete",
    "in_list_view": 1,
-   "label": "Case Title"
-  },
-  {
-   "fieldname": "case_number",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Case Number",
-   "unique": 1
+   "label": "Case Title",
+   "reqd": 1
   },
   {
    "fieldname": "client",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Client",
-   "options": "Client"
+   "options": "Client",
+   "reqd": 1
   },
   {
    "fieldname": "case_type",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Case Type",
-   "options": "\nCivil\nCriminal\nFamily\nCorporate\nProperty\nOther"
+   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther",
+   "reqd": 1
   },
   {
    "fieldname": "case_details_section",
@@ -72,9 +71,11 @@
   },
   {
    "fieldname": "court_name",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Court Name"
+   "label": "Court Name",
+   "options": "\nCity Civil Court, Chennai\nSessions Court, Chennai\nFamily Court - Chennai\nLabour Court - Chennai I\nDistrict Consumer Commission - Chennai (South)\nNCLT - Chennai Bench\nITAT - Chennai Bench\nCAT - Chennai Bench\nMadras High Court - Constitutional Bench",
+   "read_only": 1
   },
   {
    "fieldname": "opponent_name",
@@ -92,16 +93,49 @@
    "fieldtype": "Text Editor",
    "in_list_view": 1,
    "label": "Case Description"
+  },
+  {
+   "fieldname": "typical_court",
+   "fieldtype": "Select",
+   "label": "Typical Court",
+   "options": "\nJudicial Magistrate Court\nSessions Court\nDistrict Munsif Court\nSubordinate Court\nFamily Court\nLabour Court\nIndustrial Tribunal\nConsumer Disputes Redressal Commission\nNational Company Law Tribunal (NCLT)\nIncome Tax Appellate Tribunal (ITAT)\nCentral Administrative Tribunal (CAT)\nHigh Court\nSupreme Court"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Case Number",
+   "options": "CIV-.YY.-\nCRIM-.YY.-\nFAM-.YY.-\nLAB-.YY.-\nCC-.YY.-\nCOMP-.YY.-\nTAX-.YY.-\nSERV-.YY.-\nCONST-.YY.-\nOTH-.YY.-",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_qyub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "court_location",
+   "fieldtype": "Select",
+   "label": "Court Location",
+   "options": "\nGeorge Town\nPark Town\nMylapore\nGeorge Town\nNungambakkam",
+   "read_only": 1
+  },
+  {
+   "fieldname": "court_address",
+   "fieldtype": "Select",
+   "label": "Court Address",
+   "options": "\nHigh Court Campus, Parrys, Chennai - 600104\nSingaravelar Maligai, Rajaji Salai, George Town, Chennai - 600001\nAllikulam Complex, Park Town, Chennai - 600003\nCity Civil Court Campus, Rajaji Salai, Chennai - 600104\nSlum Clearance Board Building, R.K. Mutt Road, Mylapore, Chennai - 600004\nCorporate Bhavan, No.29, Rajaji Salai, Behind RBI, Chennai - 600001\nAayakar Bhavan Annexe, MG Road, Nungambakkam, Chennai - 600034\nCity Civil Court Buildings, Rajaji Salai, Chennai - 600104\nHigh Court Campus, Parrys, Chennai - 600104",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-22 16:27:00.479845",
+ "modified": "2025-08-23 18:56:36.290054",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {

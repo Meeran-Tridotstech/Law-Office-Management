@@ -24,7 +24,7 @@
   "case_details_tab",
   "case_details_section",
   "case_title",
-  "case_number",
+  "naming_series",
   "case_type",
   "case_status",
   "column_break_kxrq",
@@ -158,12 +158,6 @@
    "options": "Case"
   },
   {
-   "fetch_from": "case_title.case_number",
-   "fieldname": "case_number",
-   "fieldtype": "Read Only",
-   "label": "Case Number"
-  },
-  {
    "fetch_from": "case_title.case_type",
    "fieldname": "case_type",
    "fieldtype": "Read Only",
@@ -229,13 +223,19 @@
    "hidden": 1,
    "label": "Status",
    "options": "Draft\nFiled\nHearing Scheduled\nUnder Trial\nJudgement Pending\nClosed"
+  },
+  {
+   "fetch_from": "case_title.case_number",
+   "fieldname": "naming_series",
+   "fieldtype": "Read Only",
+   "label": "Case Number"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-22 19:37:14.479799",
+ "modified": "2025-08-23 16:18:12.259061",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

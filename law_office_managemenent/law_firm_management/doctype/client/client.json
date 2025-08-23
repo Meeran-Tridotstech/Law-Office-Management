@@ -12,11 +12,12 @@
   "client_name",
   "client_type",
   "gender",
+  "column_break_ypah",
   "date_of_birth",
-  "column_break_zwaa",
   "company_name",
   "contact_number",
   "email",
+  "column_break_zwaa",
   "city",
   "state",
   "id_proof_section",
@@ -147,13 +148,17 @@
   {
    "fieldname": "column_break_iakd",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ypah",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-22 12:32:11.258511",
+ "modified": "2025-08-23 19:41:58.628423",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client",
