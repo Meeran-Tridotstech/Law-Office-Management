@@ -8,14 +8,11 @@
  "engine": "InnoDB",
  "field_order": [
   "case_proceedings_section",
-  "case",
+  "case_stage",
   "proceeding_date",
-  "court_name",
-  "judge_name",
   "column_break_wxqq",
-  "hearing_stage",
+  "judge_name",
   "next_hearing_date",
-  "status",
   "case_notes_section",
   "notes__description"
  ],
@@ -26,23 +23,10 @@
    "label": "Case Proceedings"
   },
   {
-   "fieldname": "case",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Case",
-   "options": "Case"
-  },
-  {
    "fieldname": "proceeding_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Proceeding Date"
-  },
-  {
-   "fieldname": "court_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Court Name"
   },
   {
    "fieldname": "judge_name",
@@ -55,24 +39,10 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "hearing_stage",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Hearing Stage",
-   "options": "\nFiling\nHearing\nEvidence\nCross Examination\nJudgment"
-  },
-  {
    "fieldname": "next_hearing_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Next Hearing Date"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Status",
-   "options": "\nPending\nCompleted\nAdjourned"
   },
   {
    "fieldname": "case_notes_section",
@@ -84,13 +54,20 @@
    "fieldtype": "Text",
    "in_list_view": 1,
    "label": "Notes / Description"
+  },
+  {
+   "fieldname": "case_stage",
+   "fieldtype": "Autocomplete",
+   "in_list_view": 1,
+   "label": "Case Stage",
+   "options": "Case Filing / Registration\nFirst Hearing / Summons\nWritten Statement / Reply\nFraming of Issues\nEvidence Stage\nFinal Arguments\nJudgment / Order\nExecution / Closure"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-22 17:34:41.366646",
+ "modified": "2025-08-25 19:09:52.213818",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Proceedings",

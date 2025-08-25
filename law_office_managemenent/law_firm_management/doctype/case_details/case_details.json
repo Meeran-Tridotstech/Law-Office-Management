@@ -1,44 +1,47 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "Case Details",
+ "autoname": "Case Details - .###",
  "creation": "2025-08-22 12:11:42.994868",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "client_details_tab",
   "section_break_itzf",
-  "client_id",
+  "client",
   "client_name",
   "client_type",
-  "status",
   "column_break_yiub",
   "gender",
   "date_of_birth",
-  "company_name",
   "contact_number",
   "column_break_ydxb",
+  "company_name",
   "city",
   "state",
-  "amended_from",
+  "status",
   "case_details_tab",
   "case_details_section",
+  "case_id",
   "case_title",
-  "naming_series",
-  "case_type",
-  "case_status",
-  "column_break_kxrq",
   "filed_date",
+  "typical_court",
+  "column_break_kxrq",
   "court_name",
+  "court_address",
+  "court_location",
   "opponent_name",
   "description_section",
   "description",
   "case_proceedings_tab",
-  "case_proceedings_section",
+  "case_section",
+  "case_type",
   "table_hvaz",
   "tab_2_tab",
   "case_documents_section",
-  "document"
+  "document",
+  "case_invoice_tab",
+  "case_invoice"
  ],
  "fields": [
   {
@@ -47,58 +50,60 @@
    "label": "Client Details"
   },
   {
-   "fieldname": "client_id",
-   "fieldtype": "Link",
-   "label": "Client ID",
-   "options": "Client"
-  },
-  {
    "fetch_from": "client_id.client_name",
    "fieldname": "client_name",
-   "fieldtype": "Read Only",
-   "label": "Client Name"
+   "fieldtype": "Data",
+   "label": "Client Name",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.client_type",
    "fieldname": "client_type",
-   "fieldtype": "Read Only",
-   "label": "Client Type"
+   "fieldtype": "Select",
+   "label": "Client Type",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.gender",
    "fieldname": "gender",
-   "fieldtype": "Read Only",
-   "label": "Gender"
+   "fieldtype": "Select",
+   "label": "Gender",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.date_of_birth",
    "fieldname": "date_of_birth",
-   "fieldtype": "Read Only",
-   "label": "Date of Birth"
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.company_name",
    "fieldname": "company_name",
-   "fieldtype": "Read Only",
-   "label": "Company Name"
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.contact_number",
    "fieldname": "contact_number",
-   "fieldtype": "Read Only",
-   "label": "Contact Number"
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.city",
    "fieldname": "city",
-   "fieldtype": "Read Only",
-   "label": "City"
+   "fieldtype": "Data",
+   "label": "City",
+   "read_only": 1
   },
   {
    "fetch_from": "client_id.state",
    "fieldname": "state",
-   "fieldtype": "Read Only",
-   "label": "State"
+   "fieldtype": "Data",
+   "label": "State",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_yiub",
@@ -107,16 +112,6 @@
   {
    "fieldname": "column_break_ydxb",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Case Details",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
   },
   {
    "fieldname": "client_details_tab",
@@ -153,39 +148,36 @@
   },
   {
    "fieldname": "case_title",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Case Title",
-   "options": "Case"
+   "read_only": 1
   },
   {
-   "fetch_from": "case_title.case_type",
    "fieldname": "case_type",
-   "fieldtype": "Read Only",
-   "label": "Case Type"
-  },
-  {
-   "fetch_from": "case_title.case_status",
-   "fieldname": "case_status",
-   "fieldtype": "Read Only",
-   "label": "Case Status"
+   "fieldtype": "Select",
+   "label": "Case Type",
+   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther"
   },
   {
    "fetch_from": "case_title.filed_date",
    "fieldname": "filed_date",
-   "fieldtype": "Read Only",
-   "label": "Filed Date"
+   "fieldtype": "Date",
+   "label": "Filed Date",
+   "read_only": 1
   },
   {
    "fetch_from": "case_title.court_name",
    "fieldname": "court_name",
-   "fieldtype": "Read Only",
-   "label": "Court Name"
+   "fieldtype": "Data",
+   "label": "Court Name",
+   "read_only": 1
   },
   {
    "fetch_from": "case_title.opponent_name",
    "fieldname": "opponent_name",
-   "fieldtype": "Read Only",
-   "label": "Opponent Name"
+   "fieldtype": "Data",
+   "label": "Opponent Name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_kxrq",
@@ -198,24 +190,21 @@
   },
   {
    "fieldname": "description",
-   "fieldtype": "Read Only",
+   "fieldtype": "Long Text",
    "label": "Description"
   },
   {
+   "columns": 4,
    "fieldname": "case_proceedings_tab",
    "fieldtype": "Tab Break",
-   "label": "Case Proceedings"
-  },
-  {
-   "fieldname": "case_proceedings_section",
-   "fieldtype": "Section Break",
    "label": "Case Proceedings"
   },
   {
    "fieldname": "table_hvaz",
    "fieldtype": "Table",
    "label": "Case Proceedings",
-   "options": "Case Proceedings"
+   "options": "Case Proceedings",
+   "width": "200px"
   },
   {
    "fieldname": "status",
@@ -225,17 +214,55 @@
    "options": "Draft\nFiled\nHearing Scheduled\nUnder Trial\nJudgement Pending\nClosed"
   },
   {
-   "fetch_from": "case_title.case_number",
-   "fieldname": "naming_series",
-   "fieldtype": "Read Only",
-   "label": "Case Number"
+   "fieldname": "case_id",
+   "fieldtype": "Link",
+   "label": "Case Id",
+   "options": "Case",
+   "unique": 1
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Client"
+  },
+  {
+   "fieldname": "typical_court",
+   "fieldtype": "Data",
+   "label": "Typical Court"
+  },
+  {
+   "fieldname": "court_address",
+   "fieldtype": "Data",
+   "label": "Court Address"
+  },
+  {
+   "fieldname": "court_location",
+   "fieldtype": "Data",
+   "label": "Court Location"
+  },
+  {
+   "fieldname": "case_section",
+   "fieldtype": "Section Break",
+   "label": "Case Proceedings"
+  },
+  {
+   "fieldname": "case_invoice_tab",
+   "fieldtype": "Tab Break",
+   "label": "Case Invoice"
+  },
+  {
+   "fieldname": "case_invoice",
+   "fieldtype": "Table",
+   "label": "Case Invoice",
+   "options": "Case Invoice"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-23 16:18:12.259061",
+ "modified": "2025-08-25 20:22:21.097828",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

@@ -8,15 +8,11 @@
  "engine": "InnoDB",
  "field_order": [
   "documents_section",
-  "case",
-  "document_type",
   "document_title",
-  "upload_document",
-  "image",
-  "column_break_rkfr",
   "submitted_by",
+  "upload_document",
+  "column_break_rkfr",
   "submitted_date",
-  "document_status",
   "notes_section",
   "notes__description"
  ],
@@ -25,20 +21,6 @@
    "fieldname": "documents_section",
    "fieldtype": "Section Break",
    "label": "Documents"
-  },
-  {
-   "fieldname": "case",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Case",
-   "options": "Case"
-  },
-  {
-   "fieldname": "document_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Document Type",
-   "options": "\nPetition\nAffidavit\nAgreement\nEvidence\nJudgment Copy\nOther"
   },
   {
    "fieldname": "document_title",
@@ -71,13 +53,6 @@
    "label": "Notes / Description"
   },
   {
-   "fieldname": "document_status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Document Status",
-   "options": "Draft\nReviewed\nApproved\nSubmitted to Court"
-  },
-  {
    "fieldname": "column_break_rkfr",
    "fieldtype": "Column Break"
   },
@@ -85,18 +60,13 @@
    "fieldname": "notes_section",
    "fieldtype": "Section Break",
    "label": "Notes"
-  },
-  {
-   "fieldname": "image",
-   "fieldtype": "Image",
-   "label": "Image"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-22 15:29:53.676879",
+ "modified": "2025-08-25 18:54:38.007117",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Document",

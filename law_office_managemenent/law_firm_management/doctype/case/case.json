@@ -8,16 +8,15 @@
  "field_order": [
   "case_details_section",
   "client",
+  "naming_series",
   "case_title",
   "case_type",
-  "naming_series",
   "column_break_qyub",
   "typical_court",
   "court_name",
   "court_address",
   "court_location",
   "column_break_idku",
-  "case_status",
   "filed_date",
   "opponent_name",
   "case_description_section",
@@ -28,8 +27,7 @@
    "fieldname": "case_title",
    "fieldtype": "Autocomplete",
    "in_list_view": 1,
-   "label": "Case Title",
-   "reqd": 1
+   "label": "Case Title"
   },
   {
    "fieldname": "client",
@@ -44,8 +42,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Case Type",
-   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther",
-   "reqd": 1
+   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther"
   },
   {
    "fieldname": "case_details_section",
@@ -55,13 +52,6 @@
   {
    "fieldname": "column_break_idku",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "case_status",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Case Status",
-   "options": "Draft\nAssigned\nIn Progress\nJudgment Reserved\nClosed\nArchived"
   },
   {
    "fieldname": "filed_date",
@@ -131,7 +121,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-23 18:56:36.290054",
+ "modified": "2025-08-25 13:02:30.305863",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",
