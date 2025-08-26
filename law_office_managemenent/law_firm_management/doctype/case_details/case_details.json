@@ -20,6 +20,7 @@
   "city",
   "state",
   "status",
+  "cheque_number",
   "case_details_tab",
   "case_details_section",
   "case_id",
@@ -36,12 +37,22 @@
   "case_proceedings_tab",
   "case_section",
   "case_type",
-  "table_hvaz",
+  "case_proceedings",
   "tab_2_tab",
   "case_documents_section",
   "document",
   "case_invoice_tab",
-  "case_invoice"
+  "case_invoice_section",
+  "case_invoice",
+  "payment_mode_section",
+  "payment_mode",
+  "total_amount",
+  "column_break_kwlc",
+  "upi_id",
+  "card_number",
+  "card_type",
+  "bank_name",
+  "amended_from"
  ],
  "fields": [
   {
@@ -200,13 +211,6 @@
    "label": "Case Proceedings"
   },
   {
-   "fieldname": "table_hvaz",
-   "fieldtype": "Table",
-   "label": "Case Proceedings",
-   "options": "Case Proceedings",
-   "width": "200px"
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
    "hidden": 1,
@@ -256,13 +260,81 @@
    "fieldtype": "Table",
    "label": "Case Invoice",
    "options": "Case Invoice"
+  },
+  {
+   "fieldname": "case_invoice_section",
+   "fieldtype": "Section Break",
+   "label": "Case Invoice"
+  },
+  {
+   "fieldname": "case_proceedings",
+   "fieldtype": "Table",
+   "label": "Case Proceedings",
+   "options": "Case Proceedings",
+   "width": "200px"
+  },
+  {
+   "fieldname": "payment_mode",
+   "fieldtype": "Select",
+   "label": "Payment Mode",
+   "options": "\nCash\nUPI\nCard\nBank Transfer"
+  },
+  {
+   "fieldname": "upi_id",
+   "fieldtype": "Data",
+   "label": "UPI ID"
+  },
+  {
+   "fieldname": "card_number",
+   "fieldtype": "Data",
+   "label": "Card Number"
+  },
+  {
+   "fieldname": "payment_mode_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Mode"
+  },
+  {
+   "fieldname": "column_break_kwlc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "card_type",
+   "fieldtype": "Select",
+   "label": "Card Type",
+   "options": "\nCredit\nDebit"
+  },
+  {
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "label": "Bank Name"
+  },
+  {
+   "fieldname": "cheque_number",
+   "fieldtype": "Data",
+   "label": "Cheque Number"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Case Details",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Data",
+   "label": "Total Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-25 20:22:21.097828",
+ "modified": "2025-08-26 16:03:49.190549",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

@@ -24,6 +24,7 @@
  ],
  "fields": [
   {
+   "description": "ex: State vs. Accused",
    "fieldname": "case_title",
    "fieldtype": "Autocomplete",
    "in_list_view": 1,
@@ -35,6 +36,7 @@
    "in_list_view": 1,
    "label": "Client",
    "options": "Client",
+   "placeholder": "Enter Client Name",
    "reqd": 1
   },
   {
@@ -42,7 +44,8 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Case Type",
-   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther"
+   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther",
+   "placeholder": "Choose Case Type"
   },
   {
    "fieldname": "case_details_section",
@@ -57,7 +60,8 @@
    "fieldname": "filed_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Filed Date"
+   "label": "Filed Date",
+   "placeholder": "Choose your FIR Date"
   },
   {
    "fieldname": "court_name",
@@ -71,7 +75,8 @@
    "fieldname": "opponent_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Opponent Name"
+   "label": "Opponent Name",
+   "placeholder": "Your case opponent"
   },
   {
    "fieldname": "case_description_section",
@@ -91,11 +96,13 @@
    "options": "\nJudicial Magistrate Court\nSessions Court\nDistrict Munsif Court\nSubordinate Court\nFamily Court\nLabour Court\nIndustrial Tribunal\nConsumer Disputes Redressal Commission\nNational Company Law Tribunal (NCLT)\nIncome Tax Appellate Tribunal (ITAT)\nCentral Administrative Tribunal (CAT)\nHigh Court\nSupreme Court"
   },
   {
+   "description": "Example: CC/2023/0456 \u2192 Criminal Case, filed in 2023, serial 456",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Case Number",
    "options": "CIV-.YY.-\nCRIM-.YY.-\nFAM-.YY.-\nLAB-.YY.-\nCC-.YY.-\nCOMP-.YY.-\nTAX-.YY.-\nSERV-.YY.-\nCONST-.YY.-\nOTH-.YY.-",
+   "placeholder": "CC/2023/0456 ",
    "read_only": 1,
    "reqd": 1
   },
@@ -121,7 +128,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-25 13:02:30.305863",
+ "modified": "2025-08-26 11:29:48.032747",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",

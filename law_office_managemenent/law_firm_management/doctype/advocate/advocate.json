@@ -28,12 +28,15 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Advocate Name",
+   "placeholder": "Enter Advocate Name",
    "reqd": 1
   },
   {
+   "description": "ex:TN/1234/2025",
    "fieldname": "bar_council_id",
    "fieldtype": "Data",
    "label": "Bar Council ID",
+   "placeholder": "Enter Bar Council ID",
    "reqd": 1,
    "unique": 1
   },
@@ -41,12 +44,14 @@
    "fieldname": "specialization",
    "fieldtype": "Select",
    "label": "Specialization",
-   "options": "\nCivil\nCriminal\nFamily\nCorporate\nProperty"
+   "options": "\nCivil\nCriminal\nFamily\nCorporate\nProperty",
+   "placeholder": "Specialization"
   },
   {
    "fieldname": "experience",
    "fieldtype": "Int",
-   "label": "Experience"
+   "label": "Experience",
+   "placeholder": "Enter Your Experience"
   },
   {
    "fieldname": "status",
@@ -62,12 +67,15 @@
   {
    "fieldname": "photo",
    "fieldtype": "Attach Image",
-   "label": "Photo"
+   "label": "Photo",
+   "placeholder": "Passport SIze Photo"
   },
   {
+   "description": "ex:example@gamil.com",
    "fieldname": "mail_id",
    "fieldtype": "Data",
-   "label": "Mail Id"
+   "label": "Mail Id",
+   "placeholder": "Enter your Maild ID"
   },
   {
    "fieldname": "column_break_qmyy",
@@ -78,7 +86,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-21 18:29:26.049590",
+ "modified": "2025-08-26 11:04:32.097609",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Advocate",

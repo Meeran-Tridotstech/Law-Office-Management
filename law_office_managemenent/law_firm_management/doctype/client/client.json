@@ -34,10 +34,11 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Client Name",
-   "placeholder": "Name",
+   "placeholder": "Enter Client's Name",
    "reqd": 1
   },
   {
+   "description": "Maximum 50kb SIze Required",
    "fieldname": "photo",
    "fieldtype": "Attach Image",
    "label": "Photo",
@@ -60,6 +61,7 @@
    "placeholder": "Select Gender"
   },
   {
+   "description": "ex:DD-MM-YYYY",
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -71,9 +73,10 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Company Name",
-   "placeholder": "Company Name"
+   "placeholder": "Enter Your Company Name"
   },
   {
+   "description": "ex:+ 91 XXXXXXXXXX(10 Digits)",
    "fieldname": "contact_number",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -107,7 +110,7 @@
    "in_list_view": 1,
    "label": "State",
    "options": "\nAndhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChhattisgarh\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJharkhand\nKarnataka\nKerala\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal",
-   "placeholder": "Enter your State"
+   "placeholder": "Choose Your State"
   },
   {
    "fieldname": "id_proof_type",
@@ -158,7 +161,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-23 19:41:58.628423",
+ "modified": "2025-08-26 11:17:31.549958",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client",

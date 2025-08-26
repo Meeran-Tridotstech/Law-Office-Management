@@ -38,17 +38,21 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Client Name",
+   "placeholder": "Enter your Name",
    "reqd": 1
   },
   {
+   "description": "Case Related Advocate(Available)",
    "fieldname": "advocate",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Advocate",
    "options": "Advocate",
+   "placeholder": "Choose Advocate",
    "reqd": 1
   },
   {
+   "description": "MInimum 3 Characters",
    "fieldname": "case_type",
    "fieldtype": "Select",
    "label": "Case Type",
@@ -58,7 +62,8 @@
    "fieldname": "mode_of_consultation",
    "fieldtype": "Select",
    "label": "Mode of Consultation",
-   "options": "\nIn-Person\nGoogle Meet\nWhatsApp"
+   "options": "\nIn-Person\nGoogle Meet\nWhatsApp",
+   "placeholder": "Choose Mode Of Consultation"
   },
   {
    "fieldname": "column_break_bdpc",
@@ -99,6 +104,7 @@
    "fieldname": "location__address",
    "fieldtype": "Data",
    "label": "Location / Address",
+   "placeholder": "Enter Permanent Address",
    "read_only": 1
   },
   {
@@ -112,12 +118,14 @@
    "fieldname": "whatsapp_number",
    "fieldtype": "Phone",
    "label": "WhatsApp Number",
+   "placeholder": "Enter your Whats'app Number",
    "read_only": 1
   },
   {
    "fieldname": "preferred_date_1",
    "fieldtype": "Date",
-   "label": "First Preferred Date"
+   "label": "First Preferred Date",
+   "placeholder": "Choose First Preferred date"
   },
   {
    "fieldname": "preferred_date_2",
@@ -128,6 +136,7 @@
    "fieldname": "confirmed_date",
    "fieldtype": "Date",
    "label": "Confirmed Date",
+   "placeholder": "Choose Confirm Date",
    "read_only": 1
   },
   {
@@ -149,7 +158,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-22 20:30:15.138948",
+ "modified": "2025-08-26 11:12:02.226706",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client Consultation",

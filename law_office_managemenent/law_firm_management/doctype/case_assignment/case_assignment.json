@@ -23,13 +23,15 @@
    "fieldname": "case",
    "fieldtype": "Link",
    "label": "Case",
-   "options": "Case"
+   "options": "Case",
+   "placeholder": "Enter Client Case"
   },
   {
    "fieldname": "advocate",
    "fieldtype": "Link",
    "label": "Advocate",
-   "options": "Advocate"
+   "options": "Advocate",
+   "placeholder": "Choose Advocate"
   },
   {
    "fieldname": "column_break_ulqq",
@@ -38,7 +40,8 @@
   {
    "fieldname": "assigned_date",
    "fieldtype": "Date",
-   "label": "Assigned Date"
+   "label": "Assigned Date",
+   "placeholder": "Select Date"
   },
   {
    "fieldname": "assignment_status",
@@ -50,7 +53,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-17 12:20:37.505103",
+ "modified": "2025-08-26 11:19:39.023847",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Assignment",

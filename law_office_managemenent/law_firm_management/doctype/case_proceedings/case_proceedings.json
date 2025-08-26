@@ -26,13 +26,15 @@
    "fieldname": "proceeding_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Proceeding Date"
+   "label": "Proceeding Date",
+   "placeholder": "Choose Proceeding Date"
   },
   {
    "fieldname": "judge_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Judge Name"
+   "label": "Judge Name",
+   "placeholder": "Enter Judge Name"
   },
   {
    "fieldname": "column_break_wxqq",
@@ -42,7 +44,8 @@
    "fieldname": "next_hearing_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Next Hearing Date"
+   "label": "Next Hearing Date",
+   "placeholder": "Choose Next Hearing date"
   },
   {
    "fieldname": "case_notes_section",
@@ -53,21 +56,23 @@
    "fieldname": "notes__description",
    "fieldtype": "Text",
    "in_list_view": 1,
-   "label": "Notes / Description"
+   "label": "Notes / Description",
+   "placeholder": "Enter Court Hearings Notes"
   },
   {
    "fieldname": "case_stage",
    "fieldtype": "Autocomplete",
    "in_list_view": 1,
    "label": "Case Stage",
-   "options": "Case Filing / Registration\nFirst Hearing / Summons\nWritten Statement / Reply\nFraming of Issues\nEvidence Stage\nFinal Arguments\nJudgment / Order\nExecution / Closure"
+   "options": "Case Filing / Registration\nFirst Hearing / Summons\nWritten Statement / Reply\nFraming of Issues\nEvidence Stage\nFinal Arguments\nJudgment / Order\nExecution / Closure",
+   "placeholder": "Choose Case Stage"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-25 19:09:52.213818",
+ "modified": "2025-08-26 11:37:55.666868",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Proceedings",

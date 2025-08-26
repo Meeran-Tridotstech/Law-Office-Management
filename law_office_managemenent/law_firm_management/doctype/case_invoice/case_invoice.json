@@ -6,93 +6,105 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "service__item",
+  "case_invoice_section",
+  "service",
   "invoice_date",
-  "quantity",
+  "qty",
   "rate",
-  "amount",
-  "tax_",
+  "column_break_jexm",
+  "tax_percent",
   "tax_amount",
-  "total_with_tax",
-  "status",
-  "payment_date",
-  "remarks"
+  "amount",
+  "amount_with_tax"
  ],
  "fields": [
   {
-   "fieldname": "service__item",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Service / Item",
-   "options": "\nConsultation\nFiling Fee\nCourt Fee"
-  },
-  {
+   "columns": 2,
    "fieldname": "invoice_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Invoice Date"
+   "label": "Invoice Date",
+   "placeholder": "Choose date"
   },
   {
-   "fieldname": "quantity",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Quantity"
-  },
-  {
+   "columns": 1,
+   "default": "350",
    "fieldname": "rate",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Rate"
+   "label": "Rate",
+   "placeholder": "Enter Rate",
+   "read_only": 1
   },
   {
-   "fieldname": "amount",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Amount"
-  },
-  {
-   "fieldname": "tax_",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Tax %"
-  },
-  {
+   "columns": 1,
+   "default": "23",
    "fieldname": "tax_amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Tax Amount"
+   "label": "Tax Amount",
+   "placeholder": "Enter Tax Amount"
   },
   {
-   "fieldname": "total_with_tax",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Total (With Tax)"
+   "fieldname": "column_break_jexm",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "status",
+   "fieldname": "case_invoice_section",
+   "fieldtype": "Section Break",
+   "label": "Case Invoice"
+  },
+  {
+   "columns": 2,
+   "fieldname": "service",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Status",
-   "options": "Pending\nPaid\nNot Paid"
+   "label": "Service / Item",
+   "options": "\nFirst Meeting\nCourt Filing\nDocumentation\nLegal Advice\nHearing Representation\nDrafting Pleadings\nOther",
+   "placeholder": "Choose Service"
   },
   {
-   "fieldname": "payment_date",
-   "fieldtype": "Date",
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Payment Date"
+   "label": "Quantity",
+   "placeholder": "Enter your Quantity"
   },
   {
-   "fieldname": "remarks",
-   "fieldtype": "Data",
+   "columns": 1,
+   "fieldname": "tax_percent",
+   "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Remarks"
+   "label": "Tax %",
+   "options": "0\n5\n18\n28",
+   "placeholder": "Choose Tax Percent"
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount_with_tax",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total (With Tax)",
+   "placeholder": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "23",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "placeholder": "Eneter Amount",
+   "read_only": 1
   }
  ],
- "grid_page_length": 50,
+ "grid_page_length": 100,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-25 20:23:50.547663",
+ "modified": "2025-08-26 14:57:14.317777",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Invoice",

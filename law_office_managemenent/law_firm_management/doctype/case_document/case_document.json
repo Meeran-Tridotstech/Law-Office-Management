@@ -26,31 +26,36 @@
    "fieldname": "document_title",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Document Title"
+   "label": "Document Title",
+   "placeholder": "Document Title"
   },
   {
    "fieldname": "upload_document",
    "fieldtype": "Attach",
    "in_list_view": 1,
-   "label": "Upload Document"
+   "label": "Upload Document",
+   "placeholder": "Attach Your Documents"
   },
   {
    "fieldname": "submitted_by",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Submitted By",
-   "options": "Advocate"
+   "options": "Advocate",
+   "placeholder": "Submitted By"
   },
   {
    "fieldname": "submitted_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Submitted Date"
+   "label": "Submitted Date",
+   "placeholder": "Submitted Date"
   },
   {
    "fieldname": "notes__description",
    "fieldtype": "Small Text",
-   "label": "Notes / Description"
+   "label": "Notes / Description",
+   "placeholder": "Describe your case Details"
   },
   {
    "fieldname": "column_break_rkfr",
@@ -66,7 +71,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-25 18:54:38.007117",
+ "modified": "2025-08-26 11:35:11.752783",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Document",
