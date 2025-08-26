@@ -37,3 +37,19 @@ class CaseDetails(Document):
         # Store totals in parent doctype
         self.amount = total
         self.amount_with_tax = total_with_tax
+
+
+
+@frappe.whitelist()
+def mark_payment_success(docname, razorpay_payment_id):
+    """
+    Updates payment status and stores Razorpay payment id.
+    """
+    doc = frappe.get_doc("Case Details", docname)
+    # Update payment_status
+    doc.payment_status = "Paid"
+    # Store Razorpay payment id
+    doc.razorpay_payment_id = razorpay_payment_id
+    doc.save()
+    frappe.db.commit()
+    return {"status": "success"}

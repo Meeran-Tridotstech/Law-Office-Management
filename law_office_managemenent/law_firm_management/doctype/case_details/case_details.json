@@ -44,14 +44,18 @@
   "case_invoice_tab",
   "case_invoice_section",
   "case_invoice",
-  "payment_mode_section",
-  "payment_mode",
+  "submit_invoice",
   "total_amount",
-  "column_break_kwlc",
+  "payment_tab",
+  "payment_section",
+  "payment_mode",
+  "column_break_fggq",
   "upi_id",
   "card_number",
   "card_type",
   "bank_name",
+  "payment_status",
+  "razorpay_payment_id",
   "amended_from"
  ],
  "fields": [
@@ -274,12 +278,6 @@
    "width": "200px"
   },
   {
-   "fieldname": "payment_mode",
-   "fieldtype": "Select",
-   "label": "Payment Mode",
-   "options": "\nCash\nUPI\nCard\nBank Transfer"
-  },
-  {
    "fieldname": "upi_id",
    "fieldtype": "Data",
    "label": "UPI ID"
@@ -288,15 +286,6 @@
    "fieldname": "card_number",
    "fieldtype": "Data",
    "label": "Card Number"
-  },
-  {
-   "fieldname": "payment_mode_section",
-   "fieldtype": "Section Break",
-   "label": "Payment Mode"
-  },
-  {
-   "fieldname": "column_break_kwlc",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "card_type",
@@ -315,6 +304,47 @@
    "label": "Cheque Number"
   },
   {
+   "fieldname": "submit_invoice",
+   "fieldtype": "Button",
+   "label": "Submit Invoice"
+  },
+  {
+   "fieldname": "payment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "payment_section",
+   "fieldtype": "Section Break",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "column_break_fggq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_mode",
+   "fieldtype": "Select",
+   "label": "Payment Mode",
+   "options": "\nCash\nUPI\nCard\nBank Transfer"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "label": "Payment Status",
+   "options": "Not Paid\nPaid\nPending\nPayment Failed"
+  },
+  {
+   "fieldname": "razorpay_payment_id",
+   "fieldtype": "Data",
+   "label": "Razorpay Payment Id"
+  },
+  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -323,18 +353,13 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
-  },
-  {
-   "fieldname": "total_amount",
-   "fieldtype": "Data",
-   "label": "Total Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-26 16:03:49.190549",
+ "modified": "2025-08-26 20:17:54.168002",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

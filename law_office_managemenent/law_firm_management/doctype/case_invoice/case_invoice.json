@@ -43,7 +43,8 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Tax Amount",
-   "placeholder": "Enter Tax Amount"
+   "placeholder": "Enter Tax Amount",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_jexm",
@@ -104,7 +105,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-26 14:57:14.317777",
+ "modified": "2025-08-26 17:17:22.207949",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Invoice",
