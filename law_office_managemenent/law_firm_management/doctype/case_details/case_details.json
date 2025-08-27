@@ -15,12 +15,11 @@
   "gender",
   "date_of_birth",
   "contact_number",
-  "column_break_ydxb",
   "company_name",
+  "column_break_ydxb",
   "city",
   "state",
   "status",
-  "cheque_number",
   "case_details_tab",
   "case_details_section",
   "case_id",
@@ -34,6 +33,11 @@
   "opponent_name",
   "description_section",
   "description",
+  "case_assignment_tab",
+  "case_assignment_section",
+  "advocate",
+  "assigned_date",
+  "senior_lawyer_status",
   "case_proceedings_tab",
   "case_section",
   "case_type",
@@ -44,7 +48,6 @@
   "case_invoice_tab",
   "case_invoice_section",
   "case_invoice",
-  "submit_invoice",
   "total_amount",
   "payment_tab",
   "payment_section",
@@ -171,7 +174,8 @@
    "fieldname": "case_type",
    "fieldtype": "Select",
    "label": "Case Type",
-   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther"
+   "options": "\nCivil\nCriminal\nFamily\nLabour\nConsumer Complaints\nCompany Law\nTax matters\nService Matters\nConstitutional Issues\nOther",
+   "read_only": 1
   },
   {
    "fetch_from": "case_title.filed_date",
@@ -219,7 +223,8 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Status",
-   "options": "Draft\nFiled\nHearing Scheduled\nUnder Trial\nJudgement Pending\nClosed"
+   "options": "Draft\nFiled\nHearing Scheduled\nUnder Trial\nJudgement Pending\nClosed",
+   "read_only": 1
   },
   {
    "fieldname": "case_id",
@@ -237,17 +242,20 @@
   {
    "fieldname": "typical_court",
    "fieldtype": "Data",
-   "label": "Typical Court"
+   "label": "Typical Court",
+   "read_only": 1
   },
   {
    "fieldname": "court_address",
    "fieldtype": "Data",
-   "label": "Court Address"
+   "label": "Court Address",
+   "read_only": 1
   },
   {
    "fieldname": "court_location",
    "fieldtype": "Data",
-   "label": "Court Location"
+   "label": "Court Location",
+   "read_only": 1
   },
   {
    "fieldname": "case_section",
@@ -299,16 +307,6 @@
    "label": "Bank Name"
   },
   {
-   "fieldname": "cheque_number",
-   "fieldtype": "Data",
-   "label": "Cheque Number"
-  },
-  {
-   "fieldname": "submit_invoice",
-   "fieldtype": "Button",
-   "label": "Submit Invoice"
-  },
-  {
    "fieldname": "payment_tab",
    "fieldtype": "Tab Break",
    "label": "Payment"
@@ -331,18 +329,21 @@
   {
    "fieldname": "total_amount",
    "fieldtype": "Currency",
-   "label": "Total Amount"
+   "label": "Total Amount",
+   "read_only": 1
   },
   {
    "fieldname": "payment_status",
    "fieldtype": "Select",
    "label": "Payment Status",
-   "options": "Not Paid\nPaid\nPending\nPayment Failed"
+   "options": "Not Paid\nPaid\nPending\nPayment Failed",
+   "read_only": 1
   },
   {
    "fieldname": "razorpay_payment_id",
    "fieldtype": "Data",
-   "label": "Razorpay Payment Id"
+   "label": "Razorpay Payment Id",
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -353,13 +354,41 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "advocate",
+   "fieldtype": "Data",
+   "label": "Advocate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "case_assignment_tab",
+   "fieldtype": "Tab Break",
+   "label": "Case Assignment"
+  },
+  {
+   "fieldname": "case_assignment_section",
+   "fieldtype": "Section Break",
+   "label": "Case Assignment"
+  },
+  {
+   "fieldname": "assigned_date",
+   "fieldtype": "Date",
+   "label": "Assigned Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "senior_lawyer_status",
+   "fieldtype": "Select",
+   "label": "Senior Lawyer Status",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-26 20:17:54.168002",
+ "modified": "2025-08-27 15:07:43.025973",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

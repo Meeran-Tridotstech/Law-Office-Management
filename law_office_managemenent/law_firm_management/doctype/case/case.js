@@ -3,7 +3,22 @@
 
 frappe.ui.form.on("Case", {
     refresh(frm) {
-
+        if (!frm.is_new()) {
+            frm.add_custom_button("Go to Case Assignment", function () {
+                frappe.call({
+                    method: "law_office_managemenent.law_firm_management.doctype.case.case.create_case_assignment",
+                    args: {
+                        case_id: frm.doc.name,
+                        case_title: frm.doc.case_title
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                            frappe.set_route("Form", "Case Assignment", r.message);
+                        }
+                    }
+                });
+            }, __("Create"));
+        }
     },
     case_type: function (frm) {
         const courtOptions = {
@@ -89,7 +104,8 @@ frappe.ui.form.on("Case", {
                 court_name: 'Madras High Court - Constitutional Bench',
                 court_address: 'High Court Campus, Parrys, Chennai - 600104',
                 court_location: 'George Town'
-            }
+            },
+
         };
 
         if (court_map[frm.doc.case_type]) {
@@ -97,5 +113,17 @@ frappe.ui.form.on("Case", {
             frm.set_value('court_address', court_map[frm.doc.case_type].court_address);
             frm.set_value('court_location', court_map[frm.doc.case_type].court_location);
         }
+
+        if (frm.doc.case_type) {
+            frm.set_query("advocate", function () {
+                return {
+                    filters: {
+                        specialization: frm.doc.case_type,
+                        status: "Active"
+                    }
+                };
+            });
+        }
     }
+
 });

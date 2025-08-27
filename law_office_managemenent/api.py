@@ -74,73 +74,76 @@ def create_consultation(
 import frappe
 import razorpay
 
+# Replace with your Razorpay keys
+RAZORPAY_KEY_ID = "rzp_test_R7xDdI0dwGlmRA"
+RAZORPAY_KEY_SECRET = "HRhKG4x0ocYovKVVBVZvHfLU"
+
+client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+
+
 @frappe.whitelist()
-def verify_payment(payment_id, consultation_id):
+def mark_payment_success(payment_id, consultation_id):
     """
-    Verify Razorpay payment and update Consultation Doc
+    Capture and verify payment before updating Client Consultation
     """
     try:
-        # Razorpay client init
-        client = razorpay.Client(auth=("rzp_test_R7xDdI0dwGlmRA", "HRhKG4x0ocYovKVVBVZvHfLU"))
+        # Fetch the consultation
+        doc = frappe.get_doc("Client Consultation", consultation_id)
 
-        # Fetch payment details from Razorpay
+        # Step 1: Fetch payment details from Razorpay
         payment = client.payment.fetch(payment_id)
 
+        if not payment:
+            return {"status": "error", "message": "Invalid payment ID"}
+
+        # Step 2: Capture payment (only if not already captured)
+        if payment.get("status") == "authorized":
+            client.payment.capture(payment_id, int(doc.consultation_fee * 100))
+            payment = client.payment.fetch(payment_id)  # re-fetch updated status
+
+        # Step 3: Update doc based on final status
         if payment.get("status") == "captured":
-            # Update Frappe Document
-            doc = frappe.get_doc("Client Consultation", consultation_id)
             doc.payment_status = "Paid"
-            doc.payment_id = payment_id
+            doc.razorpay_payment_id = payment_id
+            doc.refund_status = "Not Requested"
             doc.save(ignore_permissions=True)
             frappe.db.commit()
-
-            return {"status": "success", "message": "Payment verified and saved"}
+            return {"status": "success", "message": "✅ Payment captured successfully"}
         else:
-            return {"status": "failed", "message": "Payment not captured yet"}
+            return {"status": "error", "message": f"Payment not captured. Current status: {payment.get('status')}"}
 
     except Exception as e:
-        frappe.log_error(frappe.get_traceback(), "Payment Verification Error")
+        frappe.log_error(frappe.get_traceback(), "Payment Verification Failed")
         return {"status": "error", "message": str(e)}
 
 
 
-import razorpay
-import frappe
-from frappe import _
-
 @frappe.whitelist()
 def cancel_consultation_and_refund(docname):
-    """
-    Cancel the consultation and process refund through Razorpay
-    """
     try:
-        # Load consultation record
-        doc = frappe.get_doc("Consultation", docname)
+        doc = frappe.get_doc("Client Consultation", docname)
 
-        if not doc.payment_id:
-            return {"status": "failed", "message": _("No payment found to refund")}
+        if not doc.razorpay_payment_id:
+            return {"status": "error", "message": "No Razorpay Payment ID found"}
 
-        # Razorpay client init
-        client = razorpay.Client(auth=("rzp_test_R7xDdI0dwGlmRA", "HRhKG4x0ocYovKVVBVZvHfLU"))
+        refund = client.payment.refund(
+            doc.razorpay_payment_id,
+            {
+                "amount": int(doc.consultation_fee * 100),  # paise
+                "speed": "normal"
+            }
+        )
 
-        # Refund request
-        refund = client.payment.refund(doc.payment_id, {
-            "amount": int(doc.consultation_fee * 100)  # amount in paise
-        })
-
-        # Update consultation record
-        doc.status = "Cancelled"
+        doc.payment_status = "Refunded"
         doc.refund_status = "Refunded"
-        doc.save(ignore_permissions=True)
+        doc.refund_id = refund.get("id")
+        doc.consultation_status = "Cancelled"
 
+        doc.save(ignore_permissions=True)
         frappe.db.commit()
 
-        return {
-            "status": "success",
-            "message": _("Consultation Cancelled & Refund Processed"),
-            "refund_id": refund.get("id")
-        }
+        return {"status": "success", "message": "✅ Consultation cancelled & refund processed"}
 
     except Exception as e:
-        frappe.log_error(frappe.get_traceback(), "Refund Error")
+        frappe.log_error(frappe.get_traceback(), "Refund Failed")
         return {"status": "error", "message": str(e)}

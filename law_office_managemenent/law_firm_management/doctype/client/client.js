@@ -7,6 +7,7 @@ frappe.ui.form.on("Client", {
     },
     client_type(frm) {
         toggle_fields(frm);
+        
     },
 
     id_proof_type(frm) {

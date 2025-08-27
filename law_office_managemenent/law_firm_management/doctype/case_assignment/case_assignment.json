@@ -8,10 +8,11 @@
  "field_order": [
   "case_assignment_section",
   "case",
+  "case_title",
   "advocate",
   "column_break_ulqq",
   "assigned_date",
-  "assignment_status"
+  "senior_lawyer_status"
  ],
  "fields": [
   {
@@ -27,13 +28,6 @@
    "placeholder": "Enter Client Case"
   },
   {
-   "fieldname": "advocate",
-   "fieldtype": "Link",
-   "label": "Advocate",
-   "options": "Advocate",
-   "placeholder": "Choose Advocate"
-  },
-  {
    "fieldname": "column_break_ulqq",
    "fieldtype": "Column Break"
   },
@@ -44,16 +38,27 @@
    "placeholder": "Select Date"
   },
   {
-   "fieldname": "assignment_status",
+   "fieldname": "senior_lawyer_status",
    "fieldtype": "Select",
-   "label": "Assignment Status",
-   "options": "Draft\nAssigned\nIn Progress"
+   "label": "Senior Lawyer Status",
+   "options": "Pending\nApproved\nRejected"
+  },
+  {
+   "fieldname": "case_title",
+   "fieldtype": "Data",
+   "label": "Case Title"
+  },
+  {
+   "fetch_from": "case.advocate",
+   "fieldname": "advocate",
+   "fieldtype": "Data",
+   "label": "Advocate"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-26 11:19:39.023847",
+ "modified": "2025-08-27 14:56:49.169998",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Assignment",

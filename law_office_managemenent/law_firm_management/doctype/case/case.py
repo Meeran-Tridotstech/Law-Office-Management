@@ -22,4 +22,27 @@ class Case(Document):
             cd_doc.court_address = self.court_address
             cd_doc.court_location = self.court_location
             cd_doc.opponent_name = self.opponent_name
+            cd_doc.advocate = self.advocate
             cd_doc.save()
+
+import frappe
+
+@frappe.whitelist()
+def create_case_assignment(case_id, case_title):
+    # Check if a Case Assignment already exists for this Case
+    existing = frappe.get_all("Case Assignment", filters={"case": case_id}, fields=["name"])
+    
+    if existing:
+        # return existing Case Assignment
+        return existing[0].name
+
+    # Create new Case Assignment
+    doc = frappe.get_doc({
+        "doctype": "Case Assignment",
+        "case": case_id,
+        "case_title": case_title,
+    })
+    doc.insert(ignore_permissions=True)
+    frappe.db.commit()
+    return doc.name
+
