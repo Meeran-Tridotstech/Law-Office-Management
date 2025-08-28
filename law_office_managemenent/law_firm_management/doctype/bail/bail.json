@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-28 18:48:57.801385",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bail_application_section",
+  "case",
+  "client",
+  "bail_type",
+  "application_date",
+  "column_break_iwqc",
+  "status",
+  "court_name",
+  "next_hearing_date",
+  "section_break_xszz",
+  "notes__remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "case",
+   "fieldtype": "Link",
+   "label": "Case",
+   "options": "Case"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Client"
+  },
+  {
+   "fieldname": "bail_type",
+   "fieldtype": "Select",
+   "label": "Bail Type",
+   "options": "\nRegular\nInterim\nAnticipatory"
+  },
+  {
+   "fieldname": "application_date",
+   "fieldtype": "Date",
+   "label": "Application Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDraft\nFiled\nHearing\nApproved\nRejected"
+  },
+  {
+   "fieldname": "bail_application_section",
+   "fieldtype": "Section Break",
+   "label": "Bail Application"
+  },
+  {
+   "fieldname": "court_name",
+   "fieldtype": "Data",
+   "label": "Court Name"
+  },
+  {
+   "fieldname": "next_hearing_date",
+   "fieldtype": "Date",
+   "label": "Next Hearing Date"
+  },
+  {
+   "fieldname": "notes__remarks",
+   "fieldtype": "Text Editor",
+   "label": "Notes / Remarks"
+  },
+  {
+   "fieldname": "column_break_iwqc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xszz",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-28 18:56:27.147889",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Bail",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

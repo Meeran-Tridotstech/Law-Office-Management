@@ -1,0 +1,25 @@
+{
+ "cards": [
+  {
+   "card": "Card"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Chart",
+   "width": "Full"
+  }
+ ],
+ "creation": "2025-08-28 16:28:29.715168",
+ "dashboard_name": "Case Details",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-08-28 16:28:29.715168",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Case Details",
+ "owner": "Administrator"
+}

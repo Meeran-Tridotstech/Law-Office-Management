@@ -8,11 +8,11 @@ frappe.ui.form.on("Case Details", {
         if (frappe.user_roles.includes("Junior Advocate")) {
             if (frm.doc.senior_lawyer_status !== "Approved") {
                 // Make all fields read-only
-                frm.fields.forEach(f => frm.set_df_property(f.fieldname, "read_only", 1));
+                frm.docfields.forEach(f => frm.set_df_property(f.fieldname, "read_only", 1));
                 frm.set_intro("⛔ You cannot edit until Senior Lawyer approves.");
             } else {
                 // Allow edit
-                frm.fields.forEach(f => frm.set_df_property(f.fieldname, "read_only", 0));
+                frm.docfields.forEach(f => frm.set_df_property(f.fieldname, "read_only", 0));
                 frm.set_intro("");
             }
         }
@@ -26,8 +26,48 @@ frappe.ui.form.on("Case Details", {
     payment_mode(frm) {
         toggle_payment_fields(frm);
         add_pay_now_button(frm);
+    },
+
+    status(frm) {
+        if (frm.doc.status === "Filed") {
+            // Bail check + popup
+            frappe.call({
+                method: "frappe.client.get_list",
+                args: { doctype: "Bail", filters: { case: frm.doc.name }, limit_page_length: 1 },
+                callback: function(r) {
+                    if (r.message && r.message.length > 0) {
+                        frappe.msgprint("Bail application form already ready.");
+                    } else {
+                        frappe.confirm(
+                            'Apply for Bail?',
+                            function() {
+                                frappe.call({
+                                    method: "frappe.client.insert",
+                                    args: {
+                                        doc: {
+                                            doctype: "Bail",
+                                            case: frm.doc.name,
+                                            client: frm.doc.client,
+                                            status: "Draft",
+                                            application_date: frappe.datetime.get_today()
+                                        }
+                                    },
+                                    callback: function(res) {
+                                        frappe.msgprint("Bail application created successfully.");
+                                    }
+                                });
+                            },
+                            function() {
+                                // No → do nothing
+                            }
+                        );
+                    }
+                }
+            });
+        }
     }
 });
+
 
 // ================= Case Stage Options =================
 function set_case_stage_options(frm) {
