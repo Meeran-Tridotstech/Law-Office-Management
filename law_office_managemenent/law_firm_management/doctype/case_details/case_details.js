@@ -222,3 +222,9 @@ function calculate_amount(frm, cdt, cdn) {
         frm.set_value("total_amount", total);
     }
 }
+
+
+
+
+
+

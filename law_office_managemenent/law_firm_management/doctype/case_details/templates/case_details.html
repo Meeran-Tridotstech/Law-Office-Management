@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Law Office - Case Details</title>
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding-top: 80px; /* Prevent content under navbar */
+      background-color: #f8f9fa;
+    }
+
+    /* Navbar */
+    .custom-navbar {
+      background-color: #002147; /* Navy Blue */
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      animation: fadeInDown 1s ease-out;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .custom-navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Case Card */
+    .case-card {
+      display: flex;
+      align-items: flex-start;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      padding: 20px;
+      margin: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .case-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .case-info h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #002147;
+    }
+
+    .case-info p {
+      margin: 3px 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .status {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="custom-navbar">
+    <div class="container">
+      <img src="https://cdn-icons-png.flaticon.com/512/1041/1041883.png"
+           class="logo"
+           alt="Law Office Logo" />
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/cases">Cases</a></li>
+        <li><a href="/lawyers">Lawyers</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Case Card Template (loop with Jinja in Frappe) -->
+  {% for doc in cases %}
+  <div class="case-card">
+    <img src="{{ doc.image or '/assets/frappe/images/default-image.png' }}" alt="{{ doc.case_title or 'Case' }}" />
+    <div class="case-info">
+      <h3><a href="{{ doc.route or '#' }}">{{ doc.case_title or 'Untitled Case' }}</a></h3>
+      <p><strong>Client:</strong> {{ doc.client or 'Unknown Client' }}</p>
+      <p><strong>Lawyer:</strong> {{ doc.assigned_lawyer or 'Not Assigned' }}</p>
+      <p><strong>Status:</strong> <span class="status">{{ doc.status or 'Pending' }}</span></p>
+      <p><strong>Case Type:</strong> {{ doc.case_type or 'General' }}</p>
+    </div>
+  </div>
+  {% endfor %}
+
+</body>
+</html>

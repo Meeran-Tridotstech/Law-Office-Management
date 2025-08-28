@@ -41,16 +41,40 @@ class CaseDetails(Document):
 
 
 
+# @frappe.whitelist()
+# def mark_payment_success(docname, razorpay_payment_id):
+#     """
+#     Updates payment status and stores Razorpay payment id.
+#     """
+#     doc = frappe.get_doc("Case Details", docname)
+#     # Update payment_status
+#     doc.payment_status = "Paid"
+#     # Store Razorpay payment id
+#     doc.razorpay_payment_id = razorpay_payment_id
+#     doc.save()
+#     frappe.db.commit()
+#     return {"status": "success"}
+
+
+
+import frappe
+
 @frappe.whitelist()
 def mark_payment_success(docname, razorpay_payment_id):
     """
     Updates payment status and stores Razorpay payment id.
     """
     doc = frappe.get_doc("Case Details", docname)
+    
     # Update payment_status
     doc.payment_status = "Paid"
+    
     # Store Razorpay payment id
     doc.razorpay_payment_id = razorpay_payment_id
     doc.save()
     frappe.db.commit()
-    return {"status": "success"}
+
+    # Show confirmation popup with emoji
+    frappe.msgprint(f"✅ Payment marked as <b>Paid</b> for Case <b>{docname}</b><br>💳 Razorpay ID: <b>{razorpay_payment_id}</b>")
+
+    return {"status": "success", "message": "🎉 Payment updated successfully"}
