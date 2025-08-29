@@ -243,6 +243,12 @@ app_license = "mit"
 # }
 
 
+
+app_include_css = [
+    "/assets/law_office_managemenent/css/custom.css",
+    "/assets/law_office_managemenent/css/login.css",
+
+    ]
 #Payment for Razorpay:
 #--------------------
 app_include_js = [
@@ -252,3 +258,5 @@ app_include_js = [
 
 # If you want also in website
 web_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]
+
+

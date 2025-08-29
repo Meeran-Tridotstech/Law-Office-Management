@@ -1,0 +1,27 @@
+/* Background and font */
+body {
+  background-color: #f5f7fa !important;
+  font-family: 'Inter', 'Noto Sans Tamil', sans-serif !important;
+  color: #dbedff !important;
+}
+
+/* Login box */
+.login-content {
+  background-color: #ffffff !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+/* Buttons */
+.btn-login {
+  background-color: #007bff !important;
+  color: #fff !important;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* Links */
+a {
+  color: #2980b9 !important;
+}

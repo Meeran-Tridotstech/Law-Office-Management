@@ -264,6 +264,7 @@ class Client(Document):
                 "date_of_birth": self.date_of_birth,
                 "company_name": self.company_name,
                 "contact_number": self.contact_number,
+                "client_email": self.email,
                 "city": self.city,
                 "state": self.state,
             })

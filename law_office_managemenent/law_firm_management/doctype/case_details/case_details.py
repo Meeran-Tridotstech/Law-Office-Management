@@ -57,7 +57,6 @@ class CaseDetails(Document):
 
 
 
-import frappe
 
 @frappe.whitelist()
 def mark_payment_success(docname, razorpay_payment_id):
@@ -78,3 +77,45 @@ def mark_payment_success(docname, razorpay_payment_id):
     frappe.msgprint(f"✅ Payment marked as <b>Paid</b> for Case <b>{docname}</b><br>💳 Razorpay ID: <b>{razorpay_payment_id}</b>")
 
     return {"status": "success", "message": "🎉 Payment updated successfully"}
+
+
+
+
+
+####------------   Email  -------------------------------
+@frappe.whitelist()
+def send_case_invoice_email(docname):
+    # Load Case Details document
+    doc = frappe.get_doc("Case Details", docname)
+    
+    # Generate PDF from print format
+    pdf = frappe.get_print(
+        "Case Details",  # Doctype
+        doc.name,        # Docname
+        print_format="Case Details Print",  # Your print format name
+        as_pdf=True
+    )
+    
+    # Attach PDF file
+    file = frappe.get_doc({
+        "doctype": "File",
+        "file_name": f"Case_Invoice_{doc.name}.pdf",
+        "attached_to_doctype": "Case Details",
+        "attached_to_name": doc.name,
+        "content": pdf,
+        "is_private": 1
+    })
+    file.insert(ignore_permissions=True)
+
+    # Send Email
+    frappe.sendmail(
+        recipients=[doc.client_email],  # Assuming you have client_email field
+        subject=f"Case Invoice - {doc.case_title}",
+        message=frappe.render_template(
+            frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html"),
+            {"doc": doc}
+        ),
+        attachments=[{"fname": file.file_name, "fcontent": pdf}]
+    )
+
+    return "✅ Email sent successfully with PDF attachment!"

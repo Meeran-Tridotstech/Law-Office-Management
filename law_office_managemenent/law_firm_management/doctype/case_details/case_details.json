@@ -11,6 +11,7 @@
   "client",
   "client_name",
   "client_type",
+  "client_email",
   "column_break_yiub",
   "gender",
   "date_of_birth",
@@ -381,13 +382,19 @@
    "fieldtype": "Select",
    "label": "Senior Lawyer Status",
    "read_only": 1
+  },
+  {
+   "fieldname": "client_email",
+   "fieldtype": "Data",
+   "label": "Client Email",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-29 13:00:54.968319",
+ "modified": "2025-08-30 00:14:53.907455",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

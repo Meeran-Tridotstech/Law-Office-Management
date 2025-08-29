@@ -4,9 +4,22 @@ frappe.ui.form.on("Case Details", {
         toggle_payment_fields(frm);
         add_pay_now_button(frm);
         apply_junior_advocate_restrictions(frm);
+
+
         frm.add_custom_button(__('Bail'), function () {
             create_bail_record(frm);
         });
+
+
+        frm.add_custom_button("Send Invoice Email", function () {
+            frappe.call({
+                method: "law_office_managemenent.law_firm_management.doctype.case_details.case_details.send_case_invoice_email",
+                args: { docname: frm.doc.name },
+                callback: function(r) {
+                    if(!r.exc) frappe.msgprint(r.message);
+                }
+            });
+        }, "Email");
 
         // Junior Advocate role
         // if (frappe.user_roles.includes("Junior Advocate")) {
