@@ -32,7 +32,7 @@
    "reqd": 1
   },
   {
-   "description": "ex:TN/1234/2025",
+   "description": "ex:TN1234/2025",
    "fieldname": "bar_council_id",
    "fieldtype": "Data",
    "label": "Bar Council ID",
@@ -86,7 +86,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-26 11:04:32.097609",
+ "modified": "2025-08-29 10:27:43.784487",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Advocate",

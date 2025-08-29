@@ -221,7 +221,6 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Status",
    "options": "Draft\nFiled\nHearing Scheduled\nUnder Trial\nJudgement Pending\nClosed",
    "read_only": 1
@@ -388,7 +387,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-28 14:24:29.772716",
+ "modified": "2025-08-29 13:00:54.968319",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

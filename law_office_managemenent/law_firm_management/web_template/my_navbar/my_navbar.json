@@ -1,0 +1,42 @@
+{
+ "__islocal": true,
+ "__unsaved": 1,
+ "creation": "2025-08-29 11:20:22.533487",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "client",
+   "fieldtype": "Data",
+   "label": "Client",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "advocate",
+   "fieldtype": "Data",
+   "label": "Advocate",
+   "reqd": 0
+  },
+  {
+   "__islocal": 1,
+   "__unsaved": 1,
+   "fieldname": "case_details",
+   "fieldtype": "Data",
+   "label": "Case Details",
+   "reqd": 0
+  }
+ ],
+ "idx": 0,
+ "modified": "2025-08-29 11:20:22.533487",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "My Navbar",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Navbar"
+}

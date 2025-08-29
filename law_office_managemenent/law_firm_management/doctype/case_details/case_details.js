@@ -3,19 +3,31 @@ frappe.ui.form.on("Case Details", {
         set_case_stage_options(frm);
         toggle_payment_fields(frm);
         add_pay_now_button(frm);
+        apply_junior_advocate_restrictions(frm);
+        frm.add_custom_button(__('Bail'), function () {
+            create_bail_record(frm);
+        });
 
         // Junior Advocate role
-        if (frappe.user_roles.includes("Junior Advocate")) {
-            if (frm.doc.senior_lawyer_status !== "Approved") {
-                // Make all fields read-only
-                frm.docfields.forEach(f => frm.set_df_property(f.fieldname, "read_only", 1));
-                frm.set_intro("⛔ You cannot edit until Senior Lawyer approves.");
-            } else {
-                // Allow edit
-                frm.docfields.forEach(f => frm.set_df_property(f.fieldname, "read_only", 0));
-                frm.set_intro("");
-            }
-        }
+        // if (frappe.user_roles.includes("Junior Advocate")) {
+        //     if (frm.doc.senior_lawyer_status !== "Approved") {
+        //         // Make all input fields read-only
+        //         Object.values(frm.fields_dict).forEach(f => {
+        //             if (["Data", "Link", "Select", "Date", "Datetime", "Int", "Float", "Currency", "Small Text", "Long Text", "Check"].includes(f.df.fieldtype)) {
+        //                 frm.set_df_property(f.df.fieldname, "read_only", 1);
+        //             }
+        //         });
+        //         frm.set_intro("⛔ You cannot edit until Senior Lawyer approves.");
+        //     } else {
+        //         // Allow edit again
+        //         Object.values(frm.fields_dict).forEach(f => {
+        //             if (["Data", "Link", "Select", "Date", "Datetime", "Int", "Float", "Currency", "Small Text", "Long Text", "Check"].includes(f.df.fieldtype)) {
+        //                 frm.set_df_property(f.df.fieldname, "read_only", 0);
+        //             }
+        //         });
+        //         frm.set_intro("");
+        //     }
+        // }
     },
 
     case_type(frm) {
@@ -24,50 +36,45 @@ frappe.ui.form.on("Case Details", {
     },
 
     payment_mode(frm) {
-        toggle_payment_fields(frm);
-        add_pay_now_button(frm);
+        toggle_payment_fields(frm)
+        add_pay_now_button(frm)
     },
-
-    status(frm) {
-        if (frm.doc.status === "Filed") {
-            // Bail check + popup
-            frappe.call({
-                method: "frappe.client.get_list",
-                args: { doctype: "Bail", filters: { case: frm.doc.name }, limit_page_length: 1 },
-                callback: function(r) {
-                    if (r.message && r.message.length > 0) {
-                        frappe.msgprint("Bail application form already ready.");
-                    } else {
-                        frappe.confirm(
-                            'Apply for Bail?',
-                            function() {
-                                frappe.call({
-                                    method: "frappe.client.insert",
-                                    args: {
-                                        doc: {
-                                            doctype: "Bail",
-                                            case: frm.doc.name,
-                                            client: frm.doc.client,
-                                            status: "Draft",
-                                            application_date: frappe.datetime.get_today()
-                                        }
-                                    },
-                                    callback: function(res) {
-                                        frappe.msgprint("Bail application created successfully.");
-                                    }
-                                });
-                            },
-                            function() {
-                                // No → do nothing
-                            }
-                        );
-                    }
-                }
-            });
-        }
+    senior_lawyer_status(frm) {
+        apply_junior_advocate_restrictions(frm);
     }
 });
 
+
+// ================= Helper Function =================
+function apply_junior_advocate_restrictions(frm) {
+    if (frappe.user_roles.includes("Junior Advocate")) {
+        if (frm.doc.senior_lawyer_status !== "Approved") {
+            // Lock fields
+            Object.values(frm.fields_dict).forEach(f => {
+                if (["Data", "Link", "Select", "Date", "Datetime", "Int", "Float", "Currency", "Small Text", "Long Text", "Check"].includes(f.df.fieldtype)) {
+                    frm.set_df_property(f.df.fieldname, "read_only", 1);
+                }
+            });
+            // Lock child tables too
+            if (frm.fields_dict["case_proceedings"]) frm.fields_dict["case_proceedings"].grid.toggle_enable(false);
+            if (frm.fields_dict["case_invoice"]) frm.fields_dict["case_invoice"].grid.toggle_enable(false);
+
+            frm.set_intro("⛔ You cannot edit until Senior Lawyer approves.");
+        } else {
+            // Unlock fields
+            Object.values(frm.fields_dict).forEach(f => {
+                if (["Data", "Link", "Select", "Date", "Datetime", "Int", "Float", "Currency", "Small Text", "Long Text", "Check"].includes(f.df.fieldtype)) {
+                    frm.set_df_property(f.df.fieldname, "read_only", 0);
+                }
+            });
+            // Unlock child tables
+            if (frm.fields_dict["case_proceedings"]) frm.fields_dict["case_proceedings"].grid.toggle_enable(true);
+            if (frm.fields_dict["case_invoice"]) frm.fields_dict["case_invoice"].grid.toggle_enable(true);
+
+            frm.set_intro("");
+        }
+    }
+}
 
 // ================= Case Stage Options =================
 function set_case_stage_options(frm) {
@@ -108,7 +115,7 @@ function set_case_stage_options(frm) {
     }
 
     // Apply dynamic options to Case Proceedings child table → case_stage field
-    if(frm.fields_dict["case_proceedings"] && frm.fields_dict["case_proceedings"].grid) {
+    if (frm.fields_dict["case_proceedings"] && frm.fields_dict["case_proceedings"].grid) {
         let grid_field = frm.fields_dict["case_proceedings"].grid.get_field("case_stage");
         grid_field.df.options = stages.join("\n");
         frm.fields_dict["case_proceedings"].refresh();
@@ -117,7 +124,7 @@ function set_case_stage_options(frm) {
 
 // ================= Payment Mode Toggle =================
 function toggle_payment_fields(frm, cdt, cdn) {
-    if(cdt && cdn) {
+    if (cdt && cdn) {
         let row = locals[cdt][cdn];
 
         // hide all dependent fields
@@ -126,12 +133,12 @@ function toggle_payment_fields(frm, cdt, cdn) {
         frappe.model.set_value(cdt, cdn, "card_type", null);
         frappe.model.set_value(cdt, cdn, "bank_name", null);
 
-        if(row.payment_mode === "UPI") frappe.model.set_value(cdt, cdn, "upi_id_hidden", 0);
-        else if(row.payment_mode === "Card") {
+        if (row.payment_mode === "UPI") frappe.model.set_value(cdt, cdn, "upi_id_hidden", 0);
+        else if (row.payment_mode === "Card") {
             frappe.model.set_value(cdt, cdn, "card_number_hidden", 0);
             frappe.model.set_value(cdt, cdn, "card_type_hidden", 0);
         }
-        else if(row.payment_mode === "Bank Transfer") frappe.model.set_value(cdt, cdn, "bank_name_hidden", 0);
+        else if (row.payment_mode === "Bank Transfer") frappe.model.set_value(cdt, cdn, "bank_name_hidden", 0);
     } else {
         // parent form
         frm.set_df_property("upi_id", "hidden", 1);
@@ -161,15 +168,15 @@ function add_pay_now_button(frm) {
                 "currency": "INR",
                 "name": "Law Firm Management",
                 "description": "Case Payment",
-                "handler": function(response) {
+                "handler": function (response) {
                     frappe.call({
                         method: "law_office_managemenent.law_firm_management.doctype.case_details.case_details.mark_payment_success",
                         args: {
                             docname: frm.doc.name,
                             razorpay_payment_id: response.razorpay_payment_id
                         },
-                        callback: function(r) {
-                            if(r.message.status === "success") {
+                        callback: function (r) {
+                            if (r.message.status === "success") {
                                 frappe.msgprint("Payment Successful!");
                                 frm.reload_doc();
                             }
@@ -224,7 +231,16 @@ function calculate_amount(frm, cdt, cdn) {
 }
 
 
+function create_bail_record(frm) {
+    frappe.model.get_new_doc('Bail', null, null, function (bail_doc) {
+        // Set case_id from Case Details
+        bail_doc.case_id = frm.doc.name;  // or frm.doc.case_id if you have a custom field
 
+        // You can also pass more values if needed
+        // bail_doc.client = frm.doc.client;
+        // bail_doc.case_type = frm.doc.case_type;
 
-
-
+        // Redirect to new Bail form
+        frappe.set_route('Form', 'Bail', bail_doc.name);
+    });
+}
