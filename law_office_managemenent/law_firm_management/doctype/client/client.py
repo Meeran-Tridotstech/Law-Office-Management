@@ -240,6 +240,9 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe import _
+from frappe.utils import flt
+
 
 class Client(Document):
     def after_insert(self):
@@ -318,6 +321,24 @@ class Client(Document):
             cd_doc.save(ignore_permissions=True)
 
         frappe.msgprint(f"🔄 Client details updated & synced to Case Details for <b>{self.client_name}</b>")
+    
 
 
 
+@frappe.whitelist()
+def create_bail_for_client(client_id):
+    client = frappe.get_doc("Client", client_id)
+    
+    # Check if client exists
+    if not client:
+        frappe.throw(_("Client not found"))
+
+    bail_doc = frappe.new_doc("Bail")
+    bail_doc.client = client.name
+    bail_doc.case_id = client.get("related_case")  # If you want to relate a case
+    bail_doc.save()
+    
+    # Commit the transaction
+    frappe.db.commit()
+    
+    return bail_doc

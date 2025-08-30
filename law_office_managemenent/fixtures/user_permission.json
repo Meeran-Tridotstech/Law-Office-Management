@@ -1,0 +1,15 @@
+[
+ {
+  "allow": "Advocate",
+  "applicable_for": "Client Consultation",
+  "apply_to_all_doctypes": 0,
+  "docstatus": 0,
+  "doctype": "User Permission",
+  "for_value": "TN/4566/2025",
+  "hide_descendants": 0,
+  "is_default": 0,
+  "modified": "2025-08-21 12:47:17.813157",
+  "name": "jva94c8142",
+  "user": "meeranf36@gmail.com"
+ }
+]

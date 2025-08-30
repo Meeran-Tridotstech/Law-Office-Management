@@ -249,6 +249,7 @@ app_include_css = [
     "/assets/law_office_managemenent/css/login.css",
 
     ]
+
 #Payment for Razorpay:
 #--------------------
 app_include_js = [
@@ -256,7 +257,25 @@ app_include_js = [
     "/assets/law_office_managemenent/js/chatbot.js"
 ]
 
+
 # If you want also in website
 web_include_js = ["/assets/law_office_managemenent/js/chatbot.js"]
 
+website_context = {
+    "favicon": "/assets/law_office_managemenent/image/favicon.jpg"
+    }
 
+
+# In your app's hooks.py file
+fixtures = [
+    "Print Format",
+    "Workflow",
+    "Role",
+    "Role Profile",
+    "Website Settings",
+    "Email Account",
+    "User Permission",
+    "User",
+    "Page",
+    "Print Style"
+]

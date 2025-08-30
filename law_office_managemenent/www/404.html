@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Page Not Found</title>
+  <!-- Tailwind Play CDN (for quick demos) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Extend Tailwind with custom keyframes + animations
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            float: {
+              '0%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-18px)' },
+              '100%': { transform: 'translateY(0px)' },
+            },
+            tilt: {
+              '0%': { transform: 'rotate(-4deg)' },
+              '50%': { transform: 'rotate(6deg)' },
+              '100%': { transform: 'rotate(-4deg)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            }
+          },
+          animation: {
+            float: 'float 3.5s ease-in-out infinite',
+            tilt: 'tilt 4s ease-in-out infinite',
+            shimmer: 'shimmer 3s linear infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Minimal reset for SVG scaling inside our container */
+    .svg-sensitive { width: min(46vw, 480px); height: auto; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-indigo-900 min-h-screen flex items-center justify-center text-white">
+  <main class="container mx-auto px-6 py-12">
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <section class="text-center lg:text-left">
+        <h1 class="text-6xl sm:text-7xl font-extrabold tracking-tight mb-4">404</h1>
+        <p class="text-slate-200 mb-6 max-w-xl">Whoops — the page you were looking for doesn't exist or has drifted off into the void.</p>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <a href="/" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-white text-indigo-900 font-semibold shadow-lg hover:scale-[1.02] transition-transform">Return home</a>
+          <a href="/contact" class="inline-flex items-center justify-center px-5 py-3 rounded-2xl border border-white/20 text-white/90 hover:bg-white/5 transition">Contact support</a>
+        </div>
+      </section>
+ 
+      <section class="flex items-center justify-center">
+        <!-- Animated scene: floating astronaut-style robot with shimmer on 404 text -->
+        <div class="relative">
+          <!-- Floating SVG illustration -->
+          <svg class="svg-sensitive animate-float" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="404 illustration">
+            <!-- background circle halo -->
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.7" />
+              </linearGradient>
+            </defs>
+            <circle cx="300" cy="300" r="200" fill="url(#g1)" opacity="0.10" />
+ 
+            <!-- Floating robot body -->
+            <g transform="translate(140,120)" class="animate-tilt">
+              <rect x="120" y="90" rx="28" ry="28" width="220" height="240" fill="#0f172a" stroke="#94a3b8" stroke-width="6" opacity="0.9" />
+              <circle cx="230" cy="160" r="34" fill="#e6f6fb" stroke="#60a5fa" stroke-width="6" />
+              <!-- antenna -->
+              <rect x="235" y="40" width="6" height="40" rx="3" fill="#cbd5e1" />
+              <circle cx="238" cy="34" r="8" fill="#fb7185" />
+ 
+              <!-- arms -->
+              <rect x="80" y="150" width="40" height="16" rx="8" fill="#cbd5e1" transform="rotate(-18 100 158)" />
+              <rect x="380" y="150" width="40" height="16" rx="8" fill="#cbd5e1" transform="rotate(18 400 158)" />
+ 
+              <!-- smiling mouth -->
+              <path d="M200 230 q30 22 60 0" stroke="#0f172a" stroke-width="6" fill="none" stroke-linecap="round" />
+ 
+              <!-- little jet flares -->
+              <g class="opacity-80">
+                <ellipse cx="250" cy="330" rx="40" ry="10" fill="#fb923c" opacity="0.8" />
+                <ellipse cx="250" cy="340" rx="20" ry="6" fill="#f97316" opacity="0.9" />
+              </g>
+            </g>
+ 
+            <!-- Decorative orbiting stars -->
+            <g class="opacity-90">
+              <circle cx="80" cy="80" r="3" fill="#fff" />
+              <circle cx="520" cy="120" r="2.5" fill="#fff" />
+              <circle cx="480" cy="480" r="2" fill="#fff" />
+              <circle cx="110" cy="450" r="2.3" fill="#fff" />
+            </g>
+ 
+            <!-- Large shimmering 404 text -->
+            <g transform="translate(0,0)">
+              <text x="50" y="540" font-family="Inter, system-ui, sans-serif" font-size="110" font-weight="700" fill="url(#g1)" opacity="0.95">Page</text>
+              <text x="330" y="540" font-family="Inter, system-ui, sans-serif" font-size="110" font-weight="900" fill="none" stroke="#fff" stroke-width="6">404</text>
+            </g>
+          </svg>
+ 
+          <!-- Shimmer strip across the right side to emphasize motion -->
+          <div class="absolute inset-0 pointer-events-none flex items-end justify-end">
+            <div class="w-36 h-36 rounded-full bg-gradient-to-br from-white/10 via-white/6 to-transparent animate-shimmer" style="background-size: 400% 100%;"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+ 
+    <footer class="mt-12 text-center text-sm text-slate-400">Need another map? Try searching or go back to the homepage.</footer>
+  </main>
+ 
+</body>
+</html>

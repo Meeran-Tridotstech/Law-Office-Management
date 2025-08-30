@@ -1,21 +1,26 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:client",
  "creation": "2025-08-28 18:48:57.801385",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "bail_application_section",
-  "case",
   "client",
+  "case",
+  "advocate",
+  "column_break_zzsh",
   "bail_type",
-  "application_date",
+  "filing_date",
+  "next_hearing_date",
   "column_break_iwqc",
   "status",
   "court_name",
-  "next_hearing_date",
-  "section_break_xszz",
-  "notes__remarks"
+  "bail_amount",
+  "hearing_date",
+  "case_proccessing_section",
+  "table_pspm"
  ],
  "fields": [
   {
@@ -28,7 +33,8 @@
    "fieldname": "client",
    "fieldtype": "Link",
    "label": "Client",
-   "options": "Client"
+   "options": "Client",
+   "unique": 1
   },
   {
    "fieldname": "bail_type",
@@ -37,15 +43,11 @@
    "options": "\nRegular\nInterim\nAnticipatory"
   },
   {
-   "fieldname": "application_date",
-   "fieldtype": "Date",
-   "label": "Application Date"
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Status",
-   "options": "\nDraft\nFiled\nHearing\nApproved\nRejected"
+   "options": "\nFiled\nHearing\nApproved\nRejected"
   },
   {
    "fieldname": "bail_application_section",
@@ -53,6 +55,7 @@
    "label": "Bail Application"
   },
   {
+   "fetch_from": "case.court_name",
    "fieldname": "court_name",
    "fieldtype": "Data",
    "label": "Court Name"
@@ -63,26 +66,55 @@
    "label": "Next Hearing Date"
   },
   {
-   "fieldname": "notes__remarks",
-   "fieldtype": "Text Editor",
-   "label": "Notes / Remarks"
-  },
-  {
    "fieldname": "column_break_iwqc",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_xszz",
-   "fieldtype": "Section Break"
+   "fetch_from": "case.advocate",
+   "fieldname": "advocate",
+   "fieldtype": "Data",
+   "label": "Advocate"
+  },
+  {
+   "fieldname": "bail_amount",
+   "fieldtype": "Currency",
+   "label": "Bail Amount"
+  },
+  {
+   "fetch_from": "case.filed_date",
+   "fieldname": "filing_date",
+   "fieldtype": "Date",
+   "label": "Filing Date"
+  },
+  {
+   "fieldname": "hearing_date",
+   "fieldtype": "Date",
+   "label": "Hearing Date"
+  },
+  {
+   "fieldname": "column_break_zzsh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "case_proccessing_section",
+   "fieldtype": "Section Break",
+   "label": "Case Proccessing"
+  },
+  {
+   "fieldname": "table_pspm",
+   "fieldtype": "Table",
+   "label": "Case Proccessing",
+   "options": "Case Proceedings"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-28 18:56:27.147889",
+ "modified": "2025-08-30 19:49:31.511644",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Bail",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
