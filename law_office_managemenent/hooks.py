@@ -243,18 +243,22 @@ app_license = "mit"
 # }
 
 
+app_name = "law_office_managemenent"
+app_title = "Law Firm Management"
+
 
 app_include_css = [
     "/assets/law_office_managemenent/css/custom.css",
-    "/assets/law_office_managemenent/css/login.css",
-
+    "/assets/law_office_managemenent/css/login.css"
     ]
 
 #Payment for Razorpay:
 #--------------------
 app_include_js = [
     "https://checkout.razorpay.com/v1/checkout.js",
-    "/assets/law_office_managemenent/js/chatbot.js"
+    "/assets/law_office_managemenent/js/chatbot.js",
+    "/assets/law_office_managemenent/js/client_consultation.js"
+
 ]
 
 
@@ -266,16 +270,3 @@ website_context = {
     }
 
 
-# In your app's hooks.py file
-fixtures = [
-    "Print Format",
-    "Workflow",
-    "Role",
-    "Role Profile",
-    "Website Settings",
-    "Email Account",
-    "User Permission",
-    "User",
-    "Page",
-    "Print Style"
-]

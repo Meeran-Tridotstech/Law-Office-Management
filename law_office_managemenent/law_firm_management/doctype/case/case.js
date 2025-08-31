@@ -155,6 +155,29 @@ frappe.ui.form.on("Case", {
                     }
                 });
             }, __("Create"));
+
+
+            frm.add_custom_button('Fetch Legal Suggestions', function() {
+            frappe.call({
+                method: "law_office_managemenent.law_firm_management.doctype.case_details.case_details.fetch_legal_suggestions",
+                args: { 
+                    case_text: frm.doc.case_summary  // ✅ Pass case summary (or description field)
+                },
+                callback: function(r) {
+                    if(r.message){
+                        frm.clear_table("legal_suggestions");
+                        r.message.forEach(function(s){
+                            let row = frm.add_child("legal_suggestions");
+                            row.law_precedent = s.law_precedent;
+                            row.summary = s.summary;
+                            row.source_type = s.source_type;
+                            row.confidence_score = s.confidence_score;
+                        });
+                        frm.refresh_field("legal_suggestions");
+                    }
+                }
+            });
+        });
         }
     },
 
@@ -177,7 +200,7 @@ frappe.ui.form.on("Case", {
         const selected = frm.doc.case_type;
         if (courtOptions[selected]) {
             frm.set_df_property('typical_court', 'options', courtOptions[selected].join('\n'));
-            frm.set_value('typical_court', courtOptions[selected][0]); 
+            frm.set_value('typical_court', courtOptions[selected][0]);
             frappe.msgprint(`🏛️ Default Court set to: <b>${courtOptions[selected][0]}</b>`);
         } else {
             frm.set_df_property('typical_court', 'options', '');

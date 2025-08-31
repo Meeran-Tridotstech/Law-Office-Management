@@ -1,16 +1,6 @@
 frappe.ui.form.on("Case Details", {
-    refresh(frm) {
-        toggle_payment_fields(frm);
-        add_pay_now_button(frm);
-        apply_junior_advocate_restrictions(frm);
-        set_case_stage_options(frm);
+    refresh: function(frm) {
 
-        // Add Bail button
-        frm.add_custom_button(__('Bail'), function () {
-            create_bail_record(frm);
-        });
-
-        // Send Invoice Email button
         frm.add_custom_button("Send Invoice Email", function () {
             frappe.call({
                 method: "law_office_managemenent.law_firm_management.doctype.case_details.case_details.send_case_invoice_email",
@@ -20,6 +10,22 @@ frappe.ui.form.on("Case Details", {
                 }
             });
         }, "Email");
+
+
+        if (!frm.custom_buttons_added) {
+            frm.add_custom_button("🎤 Voice Record", function() {
+                startRecording(frm);
+            });
+            frm.custom_buttons_added = true;
+        }
+
+        toggle_payment_fields(frm);
+        add_pay_now_button(frm);
+        apply_junior_advocate_restrictions(frm);
+        set_case_stage_options(frm);
+
+        // Send Invoice Email button
+        
     },
 
     case_type(frm) {
@@ -207,3 +213,53 @@ function create_bail_record(frm) {
         frappe.set_route('Form', 'Bail', bail_doc.name);
     });
 }
+
+
+
+// ===== Voice Recording for Notes Field =====
+let mediaRecorder;
+let audioChunks = [];
+
+function startRecording(frm) {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            frappe.msgprint("🎙️ Recording started... speak now!");
+
+            mediaRecorder.ondataavailable = e => {
+                audioChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                let audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                audioChunks = [];
+
+                // Convert audio to Base64
+                let reader = new FileReader();
+                reader.readAsDataURL(audioBlob);
+                reader.onloadend = function() {
+                    frappe.call({
+                        method: "law_office_managemenent.api.speech_to_text",  
+                        args: { audio_base64: reader.result },
+                        callback: function(r) {
+                            if (r.message) {
+                                frm.set_value("notes", r.message);
+                                frm.save();
+                                frappe.msgprint("✅ Voice note saved in Notes field!");
+                            }
+                        }
+                    });
+                };
+            };
+
+            // Auto stop after 5 seconds
+            setTimeout(() => {
+                mediaRecorder.stop();
+            }, 1000);
+        });
+    } else {
+        frappe.msgprint("❌ Browser does not support audio recording!");
+    }
+}
+

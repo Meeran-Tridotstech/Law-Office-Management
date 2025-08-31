@@ -43,6 +43,7 @@
   "case_section",
   "case_type",
   "case_proceedings",
+  "notes",
   "tab_2_tab",
   "case_documents_section",
   "document",
@@ -388,13 +389,18 @@
    "fieldtype": "Data",
    "label": "Client Email",
    "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Long Text",
+   "label": "Notes"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-08-30 00:14:53.907455",
+ "modified": "2025-08-31 07:57:04.859407",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

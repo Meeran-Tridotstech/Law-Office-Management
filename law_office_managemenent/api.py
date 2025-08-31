@@ -147,3 +147,54 @@ def cancel_consultation_and_refund(docname):
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "Refund Failed")
         return {"status": "error", "message": str(e)}
+
+
+
+
+
+
+#### ------------------------------------ Voice To Text -------------------------------------------------------------
+
+import frappe
+import base64
+import tempfile
+from openai import OpenAI
+from faster_whisper import WhisperModel
+
+@frappe.whitelist(allow_guest=True)
+def speech_to_text(audio_base64):
+    try:
+        # Remove metadata prefix if present
+        if "," in audio_base64:
+            audio_base64 = audio_base64.split(",")[1]
+
+        # Decode base64 → temp file
+        audio_data = base64.b64decode(audio_base64)
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as temp_audio:
+            temp_audio.write(audio_data)
+            temp_path = temp_audio.name
+
+        api_key = frappe.conf.get("openai_api_key")
+        if api_key:
+            try:
+                client = OpenAI(api_key=api_key)
+                with open(temp_path, "rb") as f:
+                    transcript = client.audio.transcriptions.create(
+                        model="gpt-4o-mini-transcribe",
+                        file=f
+                    )
+                return transcript.text
+            except Exception as e:
+                # If quota or API error → fallback
+                frappe.log_error("OpenAI Speech Error", str(e))
+
+        # ---- Fallback to Faster-Whisper (local) ----
+        model = WhisperModel("small", device="cpu", compute_type="int8")
+        segments, info = model.transcribe(temp_path, beam_size=5)
+        return " ".join([segment.text for segment in segments])
+
+    except Exception as e:
+        frappe.log_error("Speech to Text Error", str(e))
+        return "❌ Error in speech recognition"
+
+

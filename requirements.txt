@@ -1,1 +1,3 @@
 razorpay
+faster-whisper
+openai

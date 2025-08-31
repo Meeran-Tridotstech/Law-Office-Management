@@ -21,7 +21,10 @@
   "opponent_name",
   "advocate",
   "case_description_section",
-  "case_description"
+  "case_summary",
+  "summarize_tab",
+  "legal_suggestions_section",
+  "legal_suggestions"
  ],
  "fields": [
   {
@@ -85,12 +88,6 @@
    "label": "Case Description"
   },
   {
-   "fieldname": "case_description",
-   "fieldtype": "Text Editor",
-   "in_list_view": 1,
-   "label": "Case Description"
-  },
-  {
    "fieldname": "typical_court",
    "fieldtype": "Select",
    "label": "Typical Court",
@@ -130,12 +127,34 @@
    "fieldtype": "Link",
    "label": "Advocate",
    "options": "Advocate"
+  },
+  {
+   "fieldname": "summarize_tab",
+   "fieldtype": "Tab Break",
+   "label": "Summarize"
+  },
+  {
+   "fieldname": "legal_suggestions_section",
+   "fieldtype": "Section Break",
+   "label": "Legal Suggestions"
+  },
+  {
+   "fieldname": "legal_suggestions",
+   "fieldtype": "Table",
+   "label": "Legal Suggestions",
+   "options": "Legal Suggestion"
+  },
+  {
+   "fieldname": "case_summary",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Case Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-27 12:56:10.139767",
+ "modified": "2025-08-31 23:56:41.390153",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",

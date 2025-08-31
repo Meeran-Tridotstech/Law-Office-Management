@@ -83,39 +83,113 @@ def mark_payment_success(docname, razorpay_payment_id):
 
 
 ####------------   Email  -------------------------------
+# @frappe.whitelist()
+# def send_case_invoice_email(docname):
+#     # Load Case Details document
+#     doc = frappe.get_doc("Case Details", docname)
+    
+#     # Generate PDF from print format
+#     pdf = frappe.get_print(
+#         "Case Details",  # Doctype
+#         doc.name,        # Docname
+#         print_format="Case Details Print",  # Your print format name
+#         as_pdf=True
+#     )
+    
+#     # Attach PDF file
+#     file = frappe.get_doc({
+#         "doctype": "File",
+#         "file_name": f"Case_Invoice_{doc.name}.pdf",
+#         "attached_to_doctype": "Case Details",
+#         "attached_to_name": doc.name,
+#         "content": pdf,
+#         "is_private": 1
+#     })
+#     file.insert(ignore_permissions=True)
+
+#     # Send Email
+#     frappe.sendmail(
+#         recipients=[doc.client_email],  # Assuming you have client_email field
+#         subject=f"Case Invoice - {doc.case_title}",
+#         message=frappe.render_template(
+#             frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html"),
+#             {"doc": doc}
+#         ),
+#         attachments=[{"fname": file.file_name, "fcontent": pdf}]
+#     )
+
+#     return "✅ Email sent successfully with PDF attachment!"
+
+
+
 @frappe.whitelist()
 def send_case_invoice_email(docname):
-    # Load Case Details document
-    doc = frappe.get_doc("Case Details", docname)
-    
-    # Generate PDF from print format
-    pdf = frappe.get_print(
-        "Case Details",  # Doctype
-        doc.name,        # Docname
-        print_format="Case Details Print",  # Your print format name
-        as_pdf=True
-    )
-    
-    # Attach PDF file
-    file = frappe.get_doc({
-        "doctype": "File",
-        "file_name": f"Case_Invoice_{doc.name}.pdf",
-        "attached_to_doctype": "Case Details",
-        "attached_to_name": doc.name,
-        "content": pdf,
-        "is_private": 1
-    })
-    file.insert(ignore_permissions=True)
+    try:
+        doc = frappe.get_doc("Case Details", docname)
+        pdf = frappe.get_print("Case Details", doc.name, print_format="Case Details Print", as_pdf=True)
 
-    # Send Email
-    frappe.sendmail(
-        recipients=[doc.client_email],  # Assuming you have client_email field
-        subject=f"Case Invoice - {doc.case_title}",
-        message=frappe.render_template(
-            frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html"),
-            {"doc": doc}
-        ),
-        attachments=[{"fname": file.file_name, "fcontent": pdf}]
+        file = frappe.get_doc({
+            "doctype": "File",
+            "file_name": f"Case_Invoice_{doc.name}.pdf",
+            "attached_to_doctype": "Case Details",
+            "attached_to_name": doc.name,
+            "content": pdf,
+            "is_private": 1
+        })
+        file.insert(ignore_permissions=True)
+
+        frappe.sendmail(
+            recipients=[doc.client_email],
+            subject=f"Case Invoice - {doc.case_title}",
+            message=frappe.render_template(
+                frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html"),
+                {"doc": doc}
+            ),
+            attachments=[{"fname": file.file_name, "fcontent": pdf}]
+        )
+
+        return "✅ Email sent successfully with PDF attachment!"
+    except Exception as e:
+        frappe.log_error(frappe.get_traceback(), "send_case_invoice_email failed")
+        return f"❌ Error: {str(e)}"
+
+
+
+
+
+###----------------------------------------- Legal Suggestions  ---------------------------------------------------
+import frappe
+from openai import OpenAI
+
+# Initialize client once
+client = OpenAI(api_key=frappe.conf.get("openai_api_key"))
+
+
+
+@frappe.whitelist()
+def fetch_legal_suggestions(case_text: str = None):
+    if not case_text:
+        frappe.throw("Case text is required")
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",   # lighter + cheaper than full GPT-4
+        messages=[
+            {"role": "system", "content": "You are a legal assistant."},
+            {"role": "user", "content": f"Suggest relevant laws and past judgments for this case:\n{case_text}"}
+        ],
+        max_tokens=500
     )
 
-    return "✅ Email sent successfully with PDF attachment!"
+    suggestions_text = response.choices[0].message.content
+
+    suggestions = []
+    for line in suggestions_text.split("\n"):
+        if line.strip():
+            suggestions.append({
+                "law_precedent": line.strip(),
+                "summary": "",
+                "source_type": "Judgment",
+                "confidence_score": 0.9
+            })
+
+    return suggestions
