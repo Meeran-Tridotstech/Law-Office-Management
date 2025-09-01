@@ -1,0 +1,10 @@
+<h2>{{ doctype }} List</h2>
+<ul>
+    {% for d in docs %}
+    <li>
+        <a href="/law_profile?doctype={{ doctype }}&name={{ d.name | urlencode }}">
+            {{ d.name }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

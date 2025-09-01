@@ -161,6 +161,9 @@ import tempfile
 from openai import OpenAI
 from faster_whisper import WhisperModel
 
+# ✅ Load Faster-Whisper model once (not inside function)
+model = WhisperModel("small", device="cpu", compute_type="int8")
+
 @frappe.whitelist(allow_guest=True)
 def speech_to_text(audio_base64):
     try:
@@ -168,12 +171,15 @@ def speech_to_text(audio_base64):
         if "," in audio_base64:
             audio_base64 = audio_base64.split(",")[1]
 
-        # Decode base64 → temp file
+        # Decode base64 → temp WAV file
         audio_data = base64.b64decode(audio_base64)
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as temp_audio:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio:
             temp_audio.write(audio_data)
             temp_path = temp_audio.name
 
+        frappe.log_error("Speech Debug", f"Audio saved at {temp_path}, size={len(audio_data)} bytes")
+
+        # ---- Try OpenAI first ----
         api_key = frappe.conf.get("openai_api_key")
         if api_key:
             try:
@@ -185,16 +191,15 @@ def speech_to_text(audio_base64):
                     )
                 return transcript.text
             except Exception as e:
-                # If quota or API error → fallback
                 frappe.log_error("OpenAI Speech Error", str(e))
 
         # ---- Fallback to Faster-Whisper (local) ----
-        model = WhisperModel("small", device="cpu", compute_type="int8")
         segments, info = model.transcribe(temp_path, beam_size=5)
         return " ".join([segment.text for segment in segments])
 
     except Exception as e:
         frappe.log_error("Speech to Text Error", str(e))
         return "❌ Error in speech recognition"
+
 
 

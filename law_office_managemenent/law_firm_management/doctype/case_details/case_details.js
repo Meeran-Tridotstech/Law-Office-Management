@@ -217,36 +217,40 @@ function create_bail_record(frm) {
 
 
 // ===== Voice Recording for Notes Field =====
+// ===== Voice Recording for Notes Field =====
 let mediaRecorder;
 let audioChunks = [];
 
 function startRecording(frm) {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-            mediaRecorder = new MediaRecorder(stream);
+            // ✅ Ensure correct format (Opus codec)
+            mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
             mediaRecorder.start();
             frappe.msgprint("🎙️ Recording started... speak now!");
 
+            audioChunks = []; // reset
             mediaRecorder.ondataavailable = e => {
                 audioChunks.push(e.data);
             };
 
             mediaRecorder.onstop = () => {
                 let audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                audioChunks = [];
 
                 // Convert audio to Base64
                 let reader = new FileReader();
                 reader.readAsDataURL(audioBlob);
                 reader.onloadend = function() {
                     frappe.call({
-                        method: "law_office_managemenent.api.speech_to_text",  
+                        method: "law_office_managemenent.api.speech_to_text",
                         args: { audio_base64: reader.result },
                         callback: function(r) {
                             if (r.message) {
                                 frm.set_value("notes", r.message);
                                 frm.save();
                                 frappe.msgprint("✅ Voice note saved in Notes field!");
+                            } else {
+                                frappe.msgprint("❌ No transcription received!");
                             }
                         }
                     });
@@ -256,7 +260,7 @@ function startRecording(frm) {
             // Auto stop after 5 seconds
             setTimeout(() => {
                 mediaRecorder.stop();
-            }, 1000);
+            }, 5000);
         });
     } else {
         frappe.msgprint("❌ Browser does not support audio recording!");

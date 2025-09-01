@@ -269,4 +269,7 @@ website_context = {
     "favicon": "/assets/law_office_managemenent/image/favicon.jpg"
     }
 
-
+website_route_rules = [
+    {"from_route": "/law/<doctype>", "to_route": "law"},
+    {"from_route": "/law_profile/<doctype>/<name>", "to_route": "law_profile"}
+]
