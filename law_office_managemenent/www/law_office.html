@@ -93,10 +93,16 @@
       cursor: pointer;
       transition: transform .12s ease, background .2s ease, box-shadow .2s ease;
     }
+    .nav-btn a{
+      color: var(--text);
+      text-decoration:none;
+      align-items: center;
 
+    }
     .nav-btn:hover {
       transform: translateY(-1px);
       background: rgba(255, 255, 255, .04);
+      transition: transform .12s ease, background .2s ease, box-shadow .2s ease;
     }
 
     .nav-btn.active {
@@ -556,23 +562,6 @@
     <aside>
       <div class="logo"><i data-feather="briefcase"></i><span>Law Associates</span></div>
       <div class="nav-section">Main</div>
-      <!-- <nav>
-        <button class="nav-btn active" data-view="advocate"><i data-feather="user"></i><span
-            class="label">Advocate</span></button>
-        <button class="nav-btn" data-view="client"><i data-feather="users"></i><span
-            class="label">Client</span></button>
-        <button class="nav-btn" data-view="case"><i data-feather="folder"></i><span class="label">Case</span></button>
-        <button class="nav-btn" data-view="case-details"><i data-feather="file-text"></i><span class="label">Case
-            Details</span></button>
-        <button class="nav-btn" data-view="case-assignment"><i data-feather="users"></i><span class="label">Case
-            Assignment</span></button>
-        <button class="nav-btn" data-view="bail"><i data-feather="file"></i><span class="label">Bail</span></button>
-        <button class="nav-btn" data-view="client-consultation">
-          <i data-feather="message-square"></i>
-          <span class="label">Consultation</span>
-        </button>
-
-      </nav> -->
       <nav>
   <button class="nav-btn active" data-view="advocate">
     <i data-feather="user"></i>

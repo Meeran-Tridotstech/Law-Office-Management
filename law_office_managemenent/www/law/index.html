@@ -1,10 +1,158 @@
-<h2>{{ doctype }} List</h2>
-<ul>
-    {% for d in docs %}
-    <li>
-        <a href="/law_profile?doctype={{ doctype }}&name={{ d.name | urlencode }}">
-            {{ d.name }}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Law Firm Management – Dashboard</title>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+<style>
+:root {
+  --bg: #0f1221; --bg-soft: #141835; --card: #1a1f47;
+  --text: #e7e9ff; --muted: #a3a9d9; --accent: #7c5cff; --accent-2: #2de2e6;
+  --good:#3ddc97; --warn:#ffbd59; --bad:#ff6b6b; --shadow:0 20px 40px rgba(0,0,0,.35); --radius:16px;
+}
+* { box-sizing: border-box; }
+html, body { margin:0; height:100%; font-family: system-ui, sans-serif; color:var(--text);}
+body {
+  background: radial-gradient(1200px 800px at 15% 10%, rgba(124,92,255,.15),transparent 60%), 
+              radial-gradient(900px 600px at 85% 90%, rgba(45,226,230,.12),transparent 60%), var(--bg);
+}
+.app { display: grid; grid-template-columns:260px 1fr; min-height:100vh; }
+aside {
+  position:sticky; top:0; height:100vh;
+  background: linear-gradient(180deg, rgba(26,31,71,.9), rgba(20,24,53,.9));
+  backdrop-filter: blur(10px); border-right:1px solid rgba(255,255,255,.06);
+  padding:22px 16px;
+}
+.logo { display:flex; align-items:center; gap:10px; font-weight:700; margin-bottom:18px; padding:10px;
+  border-radius:12px; background: linear-gradient(90deg, rgba(124,92,255,.2), rgba(45,226,230,.12));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+}
+nav { display:grid; gap:6px; margin-top:8px; }
+.nav-btn { display:flex; align-items:center; gap:12px; width:100%; padding:12px 14px; border:0; border-radius:12px;
+ color: var(--text); background:transparent; cursor:pointer; text-align:left; transition: transform .12s ease, background .2s ease;
+}
+.nav-btn a { text-decoration:none; color:var(--text); display:flex; align-items:center; width:100%; }
+.nav-btn:hover { transform:translateY(-1px); background:rgba(255,255,255,.04);}
+.nav-btn.active { background: linear-gradient(90deg, rgba(124,92,255,.25), rgba(45,226,230,.18)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);}
+.nav-section { margin-top:18px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.12em; padding:0 6px; }
+
+.main { padding:22px clamp(16px, 4vw, 36px); display:grid; gap:18px; }
+
+.cards {
+
+  gap: 12px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(26,31,71,.95), rgba(20,24,53,.9));
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin:10px 0px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+
+.card:hover { transform: translateY(-3px); }
+
+.card h3 { margin: 0 0 6px; font-size: 13px; color: var(--muted); }
+.card a { font-size: 12px; color: var(--text); text-decoration: none; transition: color 0.2s; }
+.card a:hover { color: var(--accent); }
+
+.view { display:none; animation: fadeIn .25s ease both; }
+.view.active { display:grid; gap:16px; }
+
+@media(max-width:1100px){.app{grid-template-columns:88px 1fr;}.label{display:none;}}
+@media(max-width:860px){aside{display:none;}}
+</style>
+</head>
+
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="logo"><i data-feather="briefcase"></i><span>Law Associates</span></div>
+    <div class="nav-section">Main</div>
+    <nav>
+      <button class="nav-btn active" data-view="cases">
+        <i data-feather="user"></i>
+        <span class="label"><a href="Advocate">Advocate</a></span>
+      </button>
+      <button class="nav-btn" data-view="case-details">
+        <i data-feather="users"></i>
+        <span class="label"><a href="Client">Client</a></span>
+      </button>
+      <button class="nav-btn" data-view="case-details">
+        <i data-feather="folder"></i>
+        <span class="label"><a href="Case">Case</a></span>
+      </button>
+      <button class="nav-btn" data-view="case-details">
+        <i data-feather="file-text"></i>
+        <span class="label"><a href="Case Details">Case Details</a></span>
+      </button>
+      <button class="nav-btn" data-view="case-details">
+        <i data-feather="users"></i>
+        <span class="label"><a href="Case Assignment">Case Assignment</a></span>
+      </button>
+      <button class="nav-btn" data-view="case-details">
+        <i data-feather="file"></i>
+        <span class="label"><a href="Bail">Bail</a></span>
+      </button>
+      <button class="nav-btn" data-view="case-details">
+        <i data-feather="message-square"></i>
+        <span class="label"><a href="Client Consultation">Consultation</a></span>
+      </button>
+    </nav>
+    <div class="nav-section">Utilities</div>
+    <nav>
+      <button class="nav-btn" id="btn-open-modal"><i data-feather="plus-circle"></i><span class="label">New Case</span></button>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <!-- Cases View -->
+    <section id="view-cases" class="view active">
+      <div class="cards">
+        {% if docs %}
+          {% for d in docs %}
+          <div class="card">
+            <h3>{{ d.doctype }}</h3>
+            <a href="/law_profile?doctype={{ d.doctype }}&name={{ d.name | urlencode }}">{{ d.name }}</a>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>No cases found.</p>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+feather.replace();
+
+// Sidebar nav toggle
+const navButtons = document.querySelectorAll('.nav-btn[data-view]');
+const views = document.querySelectorAll('.view');
+
+navButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    navButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const viewId = btn.dataset.view;
+    views.forEach(v=>v.classList.remove('active'));
+    document.getElementById('view-'+viewId).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

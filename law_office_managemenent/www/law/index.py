@@ -6,5 +6,8 @@ def get_context(context):
         frappe.throw("Doctype is missing")
 
     context.doctype = doctype
-    context.docs = frappe.get_all(doctype, fields=["name"])
+    docs = frappe.get_all(doctype, fields=["name"])
+    for d in docs:
+        d["doctype"] = doctype  # Inject doctype into each dict
+    context.docs = docs
     return context
