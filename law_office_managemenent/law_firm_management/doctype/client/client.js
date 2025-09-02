@@ -265,9 +265,9 @@ frappe.ui.form.on("Client", {
         }
 
         if (type === "Aadhar") {
-            let regex = /^[0-9]{12}$/;
+            let regex = /^[0-9]{16}$/;
             if (!regex.test(value)) {
-                error_msg = "❌ Invalid Aadhar. Must be 12 digits.";
+                error_msg = "❌ Invalid Aadhar. Must be 16 digits.";
             }
         }
 

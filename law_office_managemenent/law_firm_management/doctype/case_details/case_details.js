@@ -40,6 +40,7 @@ frappe.ui.form.on("Case Details", {
     senior_lawyer_status(frm) {
         apply_junior_advocate_restrictions(frm);
     }
+
 });
 
 // ================= Helper Functions =================
@@ -217,7 +218,6 @@ function create_bail_record(frm) {
 
 
 // ===== Voice Recording for Notes Field =====
-// ===== Voice Recording for Notes Field =====
 let mediaRecorder;
 let audioChunks = [];
 
@@ -260,10 +260,9 @@ function startRecording(frm) {
             // Auto stop after 5 seconds
             setTimeout(() => {
                 mediaRecorder.stop();
-            }, 5000);
+            }, 2000);
         });
     } else {
         frappe.msgprint("❌ Browser does not support audio recording!");
     }
 }
-

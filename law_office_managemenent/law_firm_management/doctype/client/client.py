@@ -239,7 +239,6 @@ import frappe
 from frappe.model.document import Document
 from frappe import _
 from frappe.utils import flt
-import qrcode
 import io
 import base64
 from io import BytesIO
@@ -305,7 +304,6 @@ class Client(Document):
                 frappe.log_error(frappe.get_traceback(), "Client Email Send Failed")
                 frappe.msgprint("⚠️ Failed to send welcome email. Please check Email settings.")
 
-        self.generate_qr_code()
         
 
     def on_update(self):
@@ -326,57 +324,6 @@ class Client(Document):
             cd_doc.save(ignore_permissions=True)
 
         frappe.msgprint(f"🔄 Client details updated & synced to Case Details for <b>{self.client_name}</b>")
-
-        self.generate_qr_code()
-
-
-
-    def generate_qr_code(self):
-        """
-        Generates a QR code for the Client and saves it in the 'qr_code' field.
-        """
-        try:
-            # QR content: URL pointing to the client record
-            qr_content = f"{frappe.utils.get_url()}/app/client/{self.name}"
-
-            # Generate QR code
-            qr = qrcode.QRCode(
-                version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_L,
-                box_size=10,
-                border=4,
-            )
-            qr.add_data(qr_content)
-            qr.make(fit=True)
-
-            img = qr.make_image(fill_color="black", back_color="white")
-
-            # Save QR image to memory
-            buffer = BytesIO()
-            img.save(buffer, format="PNG")
-            buffer.seek(0)
-
-            # Convert image to base64
-            img_base64 = base64.b64encode(buffer.read()).decode("utf-8")
-
-            # Create a new File document in Frappe
-            file_doc = frappe.get_doc({
-                "doctype": "File",
-                "file_name": f"{self.name}_qr.png",
-                "is_private": 0,
-                "content": img_base64,
-                "attached_to_doctype": "Client",
-                "attached_to_name": self.name
-            })
-            file_doc.insert()
-            frappe.db.commit()
-
-            # Save file URL to Client's qr_code field
-            frappe.db.set_value("Client", self.name, "qr_code", file_doc.file_url)
-            frappe.db.commit()
-
-        except Exception as e:
-            frappe.log_error(message=str(e), title="QR Code Generation Failed")
 
     
 

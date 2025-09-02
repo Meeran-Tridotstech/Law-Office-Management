@@ -20,7 +20,6 @@
   "email",
   "city",
   "state",
-  "qr_code",
   "id_proof_section",
   "column_break_iakd",
   "id_proof_type",
@@ -156,18 +155,13 @@
   {
    "fieldname": "column_break_ypah",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "qr_code",
-   "fieldtype": "Attach Image",
-   "label": "QR Code"
   }
  ],
  "grid_page_length": 50,
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-01 00:26:19.255315",
+ "modified": "2025-09-02 11:17:47.547853",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client",

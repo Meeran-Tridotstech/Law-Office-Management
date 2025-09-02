@@ -200,6 +200,3 @@ def speech_to_text(audio_base64):
     except Exception as e:
         frappe.log_error("Speech to Text Error", str(e))
         return "❌ Error in speech recognition"
-
-
-

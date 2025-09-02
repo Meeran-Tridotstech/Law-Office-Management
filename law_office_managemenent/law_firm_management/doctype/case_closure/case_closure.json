@@ -7,9 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "case_closure_section",
-  "case",
   "client",
   "advocate",
+  "case",
   "closure_reason",
   "column_break_kzwh",
   "judgment_date",
@@ -17,7 +17,8 @@
   "attach_final_judgment_copy",
   "archived_status",
   "notes_section",
-  "closure_notes"
+  "closure_notes",
+  "amended_from"
  ],
  "fields": [
   {
@@ -90,12 +91,23 @@
    "fieldname": "notes_section",
    "fieldtype": "Section Break",
    "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Case Closure",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-08-26 12:05:56.134086",
+ "modified": "2025-09-02 15:12:14.114431",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Closure",

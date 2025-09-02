@@ -9,7 +9,6 @@
  "field_order": [
   "documents_section",
   "document_title",
-  "submitted_by",
   "upload_document",
   "column_break_rkfr",
   "submitted_date",
@@ -35,14 +34,6 @@
    "in_list_view": 1,
    "label": "Upload Document",
    "placeholder": "Attach Your Documents"
-  },
-  {
-   "fieldname": "submitted_by",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Submitted By",
-   "options": "Advocate",
-   "placeholder": "Submitted By"
   },
   {
    "fieldname": "submitted_date",
@@ -71,7 +62,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-26 11:35:11.752783",
+ "modified": "2025-09-02 16:48:09.509169",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Document",

@@ -104,18 +104,21 @@ class CaseAssignment(Document):
                 )
 
     def update_case_details(self):
-        # Update all linked Case Details
-        if self.case:  # make sure 'case' is the link field to Case
+        if self.case:  # link to Case
             case_details_list = frappe.get_all(
                 "Case Details",
-                filters={"case_id": self.case},  # field in Case Details pointing to Case
+                filters={"case_id": self.case},
                 fields=["name"]
             )
 
             for cd in case_details_list:
-                cd_doc = frappe.get_doc("Case Details", cd.name)
-                cd_doc.senior_lawyer_status = self.senior_lawyer_status
-                cd_doc.assigned_date = self.assigned_date
-                cd_doc.save(ignore_permissions=True)
+                # 🔄 Update only specific fields directly in DB
+                frappe.db.set_value("Case Details", cd.name, {
+                    "senior_lawyer_status": self.senior_lawyer_status,
+                    "assigned_date": self.assigned_date
+                    # add more fields if needed like:
+                    # "client_type": self.client_type,
+                    # "gender": self.gender,
+                })
 
             frappe.msgprint(f"📂 {len(case_details_list)} Case Detail(s) synced with Case Assignment.")
