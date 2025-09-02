@@ -122,12 +122,50 @@ def mark_payment_success(docname, razorpay_payment_id):
 
 
 
+# @frappe.whitelist()
+# def send_case_invoice_email(docname):
+#     try:
+#         doc = frappe.get_doc("Case Details", docname)
+#         pdf = frappe.get_print("Case Details", doc.name, print_format="Case Details Print", as_pdf=True)
+
+#         file = frappe.get_doc({
+#             "doctype": "File",
+#             "file_name": f"Case_Invoice_{doc.name}.pdf",
+#             "attached_to_doctype": "Case Details",
+#             "attached_to_name": doc.name,
+#             "content": pdf,
+#             "is_private": 1
+#         })
+#         file.insert(ignore_permissions=True)
+
+#         frappe.sendmail(
+#             recipients=[doc.client_email],
+#             subject=f"Case Invoice - {doc.case_title}",
+#             message=frappe.render_template(
+#                 frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html"),
+#                 {"doc": doc}
+#             ),
+#             attachments=[{"fname": file.file_name, "fcontent": pdf}]
+#         )
+
+#         return "✅ Email sent successfully with PDF attachment!"
+#     except Exception as e:
+#         frappe.log_error(frappe.get_traceback(), "send_case_invoice_email failed")
+#         return f"❌ Error: {str(e)}"
+
+
+
+
 @frappe.whitelist()
 def send_case_invoice_email(docname):
     try:
+        # Fetch the Case Details document
         doc = frappe.get_doc("Case Details", docname)
+
+        # Generate PDF using the specified print format
         pdf = frappe.get_print("Case Details", doc.name, print_format="Case Details Print", as_pdf=True)
 
+        # Create and attach the PDF file to the Case Details doc
         file = frappe.get_doc({
             "doctype": "File",
             "file_name": f"Case_Invoice_{doc.name}.pdf",
@@ -138,17 +176,27 @@ def send_case_invoice_email(docname):
         })
         file.insert(ignore_permissions=True)
 
+        # Fetch the HTML content from the Email Template named "Case Invoice Mail"
+        # email_template_html = frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html")
+
+        # Render the template with dynamic data
+        rendered_message = frappe.render_template("templates/email_template.html", {"doc": doc})
+
+        # Send the email with CC and PDF attachment
         frappe.sendmail(
             recipients=[doc.client_email],
+            cc=["advocatesenior6@gmail.com"],
             subject=f"Case Invoice - {doc.case_title}",
-            message=frappe.render_template(
-                frappe.db.get_value("Email Template", "Case Invoice Mail", "response_html"),
-                {"doc": doc}
-            ),
-            attachments=[{"fname": file.file_name, "fcontent": pdf}]
+            message=rendered_message,
+            attachments=[{
+                "fname": file.file_name,
+                "fcontent": pdf
+            }],
+            delayed=False
         )
 
         return "✅ Email sent successfully with PDF attachment!"
+
     except Exception as e:
         frappe.log_error(frappe.get_traceback(), "send_case_invoice_email failed")
         return f"❌ Error: {str(e)}"

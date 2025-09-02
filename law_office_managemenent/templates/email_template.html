@@ -1,0 +1,48 @@
+<table style="width:100%; font-family: Calibri, sans-serif; font-size:11pt; color:#333; border-collapse:collapse;">
+  <!-- Header -->
+  <tr>
+    <td style="padding:15px; border-bottom:2px solid #1a73e8;">
+      <table style="width:100%;">
+        <tr>
+          <td style="width:70%;">
+            <h2 style="margin:0; color:#1a73e8;">Law Associates</h2>
+            <p style="margin:2px 0;">123 Legal Street, Kayalpatinam, TN - 628206</p>
+            <p style="margin:2px 0;">Phone: +91 9344287100 | Email: lawmanagement@gmail.com</p>
+            <p style="margin:2px 0;">Website: www.lawfirm.com</p>
+          </td>
+          <td style="width:30%; text-align:right;">
+            <img src="cid:lawfirmlogo" alt="Law Firm Logo" style="max-height:60px;">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Body -->
+  <tr>
+    <td style="padding:20px;">
+      <p>Dear {{ client_name }},</p>
+
+      <p>We hope this message finds you well. Please find below the latest update regarding your case:</p>
+
+      <ul>
+        <li><strong>Case Title:</strong> {{ case_title }}</li>
+        <li><strong>Case ID:</strong> {{ case_id }}</li>
+        <li><strong>Status:</strong> {{ case_status }}</li>
+        <li><strong>Next Hearing:</strong> {{ next_hearing_date }}</li>
+      </ul>
+
+      <p>If you have any questions or require further assistance, feel free to reply to this email or contact your assigned advocate.</p>
+
+      <p>Warm regards,<br><strong>Law Associates Team</strong></p>
+    </td>
+  </tr>
+
+  <!-- Footer -->
+  <tr>
+    <td style="padding:15px; border-top:1px solid #aaa; font-size:9pt; color:#555; text-align:center;">
+      This email is confidential and intended solely for the recipient. If you received it in error, please notify us and delete it immediately.<br>
+      © {{ frappe.utils.format_date(frappe.utils.nowdate()) }} Law Associates. All rights reserved.
+    </td>
+  </tr>
+</table>
