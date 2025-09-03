@@ -32,9 +32,28 @@ class Bail(Document):
                         frappe.throw(
                             f"[Row {idx + 2}] Proceeding Date ({next_row.proceeding_date}) must be after previous row's Hearing Date ({current_row.hearing_date})."
                         )
-    def on_update(self):
-        # Find matching Case Details
-        matching_cases = frappe.get_all("Case Details", filters={"case_id": self.case}, fields=["name"])
+                        
+    # def on_update(self):
+    #     # Find matching Case Details
+    #     matching_cases = frappe.get_all("Case Details", filters={"case_id": self.case}, fields=["name"])
         
+    #     for case in matching_cases:
+    #         frappe.db.set_value("Case Details", case.name, "bail_amount", self.bail_amount)
+    
+    
+    def on_update(self):
+        # 🔍 Find matching Case Details
+        matching_cases = frappe.get_all(
+            "Case Details",
+            filters={"case_id": self.case},
+            fields=["name"]
+        )
+
         for case in matching_cases:
-            frappe.db.set_value("Case Details", case.name, "bail_amount", self.bail_amount)
+            cd_doc = frappe.get_doc("Case Details", case.name)
+
+            # ✅ Update bail_amount safely
+            cd_doc.bail_amount = self.bail_amount
+            cd_doc.save(ignore_permissions=True)
+
+        frappe.msgprint(f"💰 Bail amount synced to <b>Case Details</b> Case Detail(s).")

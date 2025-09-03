@@ -399,14 +399,15 @@
   {
    "fieldname": "bail_amount",
    "fieldtype": "Data",
-   "label": "Bail Amount"
+   "label": "Bail Amount",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-09-03 08:43:25.311177",
+ "modified": "2025-09-03 11:01:54.478240",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

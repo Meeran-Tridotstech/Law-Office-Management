@@ -23,7 +23,6 @@
   "status",
   "payment_status",
   "payment_id",
-  "confirmed_date",
   "razorpay_payment_id",
   "summary_section",
   "case_summary"
@@ -74,8 +73,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Scheduled\nCompleted\nCancelled",
-   "read_only": 1
+   "options": "Scheduled\nCompleted\nCancelled"
   },
   {
    "default": "100",
@@ -135,13 +133,6 @@
    "label": "Second Preferred Date"
   },
   {
-   "fieldname": "confirmed_date",
-   "fieldtype": "Date",
-   "label": "Confirmed Date",
-   "placeholder": "Choose Confirm Date",
-   "read_only": 1
-  },
-  {
    "fieldname": "payment_id",
    "fieldtype": "Data",
    "label": "Payment Id",
@@ -165,7 +156,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-27 12:16:55.280821",
+ "modified": "2025-09-03 15:21:58.024615",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client Consultation",

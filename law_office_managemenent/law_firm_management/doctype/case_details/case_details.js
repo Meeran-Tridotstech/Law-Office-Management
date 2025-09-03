@@ -1,19 +1,19 @@
 frappe.ui.form.on("Case Details", {
-    refresh: function(frm) {
+    refresh: function (frm) {
 
         frm.add_custom_button("Send Invoice Email", function () {
             frappe.call({
                 method: "law_office_managemenent.law_firm_management.doctype.case_details.case_details.send_case_invoice_email",
                 args: { docname: frm.doc.name },
-                callback: function(r) {
-                    if(!r.exc) frappe.msgprint(r.message);
+                callback: function (r) {
+                    if (!r.exc) frappe.msgprint(r.message);
                 }
             });
         }, "Email");
 
 
         if (!frm.custom_buttons_added) {
-            frm.add_custom_button("🎤 Voice Record", function() {
+            frm.add_custom_button("🎤 Voice Record", function () {
                 startRecording(frm);
             });
             frm.custom_buttons_added = true;
@@ -25,7 +25,7 @@ frappe.ui.form.on("Case Details", {
         set_case_stage_options(frm);
 
         // Send Invoice Email button
-        
+
     },
 
     case_type(frm) {
@@ -40,12 +40,12 @@ frappe.ui.form.on("Case Details", {
     senior_lawyer_status(frm) {
         apply_junior_advocate_restrictions(frm);
     },
-    bail_amount: function(frm) {
-    frappe.db.get_doc('Bail', frm.doc.bail_amount)
-      .then(doc => {
-        frm.set_value('bail_amount', doc.bail_amount);
-      });
-  }
+    bail_amount: function (frm) {
+        frappe.db.get_doc('Bail', frm.doc.bail_amount)
+            .then(doc => {
+                frm.set_value('bail_amount', doc.bail_amount);
+            });
+    }
 
 });
 
@@ -74,33 +74,33 @@ function set_case_stage_options(frm) {
     if (!frm.doc.case_type || !frm.fields_dict["case_proceedings"]?.grid) return;
 
     let stages = [];
-    switch(frm.doc.case_type) {
+    switch (frm.doc.case_type) {
         case "Civil":
-            stages = ["Admission/Notice","Pleadings/WS","Issues","Plaintiff Evidence","Defendant Evidence","Arguments","Judgment"];
+            stages = ["Admission/Notice", "Pleadings/WS", "Issues", "Plaintiff Evidence", "Defendant Evidence", "Arguments", "Judgment"];
             break;
         case "Criminal":
-            stages = ["Cognizance","Supply of Documents","Charge Framing","Prosecution Evidence","313 Statement","Defence Evidence","Arguments","Judgment","Sentencing/Bail/Appeal"];
+            stages = ["Cognizance", "Supply of Documents", "Charge Framing", "Prosecution Evidence", "313 Statement", "Defence Evidence", "Arguments", "Judgment", "Sentencing/Bail/Appeal"];
             break;
         case "Family":
-            stages = ["Counseling/Mediation","Interim Applications (Maintenance/Child Custody)","Petitioner Evidence","Respondent Evidence","Arguments","Decree"];
+            stages = ["Counseling/Mediation", "Interim Applications (Maintenance/Child Custody)", "Petitioner Evidence", "Respondent Evidence", "Arguments", "Decree"];
             break;
         case "Labour":
-            stages = ["Reference/Complaint Filed","Conciliation","Framing of Issues","Evidence","Arguments","Award"];
+            stages = ["Reference/Complaint Filed", "Conciliation", "Framing of Issues", "Evidence", "Arguments", "Award"];
             break;
         case "Consumer Complaints":
-            stages = ["Admission","Notice","Evidence Affidavits","Written Arguments","Order"];
+            stages = ["Admission", "Notice", "Evidence Affidavits", "Written Arguments", "Order"];
             break;
         case "Company Law":
-            stages = ["Admission","IRP Appointment","CoC Formation","Resolution Process","Plan Approval","Liquidation/Closure"];
+            stages = ["Admission", "IRP Appointment", "CoC Formation", "Resolution Process", "Plan Approval", "Liquidation/Closure"];
             break;
         case "Tax matters":
-            stages = ["Show-Cause","Personal Hearing(s)","Order","Appeal (CIT(A)/ITAT/HC)","Remand/Final Order"];
+            stages = ["Show-Cause", "Personal Hearing(s)", "Order", "Appeal (CIT(A)/ITAT/HC)", "Remand/Final Order"];
             break;
         case "Service Matters":
-            stages = ["Admission","Counter","Rejoinder","Evidence (if any)","Final Hearing","Order"];
+            stages = ["Admission", "Counter", "Rejoinder", "Evidence (if any)", "Final Hearing", "Order"];
             break;
         case "Constitutional Issues":
-            stages = ["Admission","Counter","Rejoinder","Final Arguments","Judgment"];
+            stages = ["Admission", "Counter", "Rejoinder", "Final Arguments", "Judgment"];
             break;
         case "Other":
             stages = ["Custom stages as per need"];
@@ -134,7 +134,7 @@ function toggle_payment_fields(frm, cdt, cdn) {
         }
         else if (row.payment_mode === "Bank Transfer") frappe.model.set_value(cdt, cdn, "bank_name_hidden", 0);
     } else {
-        ["upi_id","card_number","card_type","bank_name"].forEach(f => frm.set_df_property(f, "hidden", 1));
+        ["upi_id", "card_number", "card_type", "bank_name"].forEach(f => frm.set_df_property(f, "hidden", 1));
 
         if (frm.doc.payment_mode === "UPI") frm.set_df_property("upi_id", "hidden", 0);
         else if (frm.doc.payment_mode === "Card") {
@@ -160,9 +160,9 @@ function add_pay_now_button(frm) {
                 handler: function (response) {
                     frappe.call({
                         method: "law_office_managemenent.law_firm_management.doctype.case_details.case_details.mark_payment_success",
-                        args: { 
-                            docname: frm.doc.name, 
-                            razorpay_payment_id: response.razorpay_payment_id 
+                        args: {
+                            docname: frm.doc.name,
+                            razorpay_payment_id: response.razorpay_payment_id
                         },
                         callback: function (r) {
                             if (r.message?.status === "success") {
@@ -181,12 +181,12 @@ function add_pay_now_button(frm) {
 }
 
 // ================= Case Invoice Calculation =================
-// frappe.ui.form.on("Case Invoice", {
-//     qty(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
-//     rate(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
-//     tax_percent(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
-//     payment_mode(frm, cdt, cdn) { toggle_payment_fields(frm, cdt, cdn); }
-// });
+frappe.ui.form.on("Case Invoice", {
+    qty(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
+    rate(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
+    tax_percent(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
+    payment_mode(frm, cdt, cdn) { toggle_payment_fields(frm, cdt, cdn); }
+});
 
 // function calculate_amount(frm, cdt, cdn) {
 //     let row = locals[cdt][cdn];
@@ -278,11 +278,11 @@ function startRecording(frm) {
                 // Convert audio to Base64
                 let reader = new FileReader();
                 reader.readAsDataURL(audioBlob);
-                reader.onloadend = function() {
+                reader.onloadend = function () {
                     frappe.call({
                         method: "law_office_managemenent.api.speech_to_text",
                         args: { audio_base64: reader.result },
-                        callback: function(r) {
+                        callback: function (r) {
                             if (r.message) {
                                 frm.set_value("notes", r.message);
                                 frm.save();
