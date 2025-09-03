@@ -237,7 +237,7 @@ frappe.ui.form.on("Client", {
 
             let placeholder_map = {
                 "PAN": "Enter 10-character PAN (e.g., ABCDE1234F)",
-                "Aadhar": "Enter 12-digit Aadhar Number",
+                "Aadhar": "Enter 16-digit Aadhar Number",
                 "Passport": "Enter 8-character Passport No (e.g., N1234567)",
                 "Driving License": "Enter Driving License No (e.g., TN0120250001234)"
             };
@@ -245,7 +245,7 @@ frappe.ui.form.on("Client", {
             // Set label and placeholder
             frm.set_df_property("id_proof_number", "label", label_map[frm.doc.id_proof_type]);
             frm.set_df_property("id_proof_number", "placeholder", placeholder_map[frm.doc.id_proof_type]);
-            frm.set_df_property("id_proof_number", "description", "");
+            frm.set_df_property("id_proof_number", "description", placeholder_map[frm.doc.id_proof_type]);
             frm.refresh_field("id_proof_number");
 
             frappe.msgprint(`🆔 ID Proof Type selected: <b>${frm.doc.id_proof_type}</b>`);

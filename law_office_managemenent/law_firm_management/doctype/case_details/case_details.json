@@ -50,6 +50,7 @@
   "case_invoice_tab",
   "case_invoice_section",
   "case_invoice",
+  "bail_amount",
   "total_amount",
   "payment_tab",
   "payment_section",
@@ -394,13 +395,18 @@
    "fieldname": "notes",
    "fieldtype": "Long Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "bail_amount",
+   "fieldtype": "Data",
+   "label": "Bail Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-09-02 13:05:12.427528",
+ "modified": "2025-09-03 08:43:25.311177",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case Details",

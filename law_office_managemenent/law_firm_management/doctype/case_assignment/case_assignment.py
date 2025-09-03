@@ -111,14 +111,19 @@ class CaseAssignment(Document):
                 fields=["name"]
             )
 
+            # for cd in case_details_list:
+            #     # 🔄 Update only specific fields directly in DB
+            #     frappe.db.set_value("Case Details", cd.name, {
+            #         "senior_lawyer_status": self.senior_lawyer_status,
+            #         "assigned_date": self.assigned_date
+            #     })
+
             for cd in case_details_list:
-                # 🔄 Update only specific fields directly in DB
-                frappe.db.set_value("Case Details", cd.name, {
-                    "senior_lawyer_status": self.senior_lawyer_status,
-                    "assigned_date": self.assigned_date
-                    # add more fields if needed like:
-                    # "client_type": self.client_type,
-                    # "gender": self.gender,
-                })
+                cd_doc = frappe.get_doc("Case Details", cd.name)
+                # Update fields you want from Case Assignment
+                # cd_doc.advocate = self.advocate
+                cd_doc.senior_lawyer_status = self.senior_lawyer_status
+                cd_doc.assigned_date = self.assigned_date
+                cd_doc.save()
 
             frappe.msgprint(f"📂 {len(case_details_list)} Case Detail(s) synced with Case Assignment.")

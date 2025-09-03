@@ -58,7 +58,6 @@ class Case(Document):
             filters={"client": self.client},
             fields=["name"]
         )
-
         for cd in case_details_list:
             cd_doc = frappe.get_doc("Case Details", cd.name)
             cd_doc.case_id = self.name

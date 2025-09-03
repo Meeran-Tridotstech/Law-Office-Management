@@ -39,7 +39,13 @@ frappe.ui.form.on("Case Details", {
 
     senior_lawyer_status(frm) {
         apply_junior_advocate_restrictions(frm);
-    }
+    },
+    bail_amount: function(frm) {
+    frappe.db.get_doc('Bail', frm.doc.bail_amount)
+      .then(doc => {
+        frm.set_value('bail_amount', doc.bail_amount);
+      });
+  }
 
 });
 
@@ -175,12 +181,34 @@ function add_pay_now_button(frm) {
 }
 
 // ================= Case Invoice Calculation =================
-frappe.ui.form.on("Case Invoice", {
-    qty(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
-    rate(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
-    tax_percent(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
-    payment_mode(frm, cdt, cdn) { toggle_payment_fields(frm, cdt, cdn); }
-});
+// frappe.ui.form.on("Case Invoice", {
+//     qty(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
+//     rate(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
+//     tax_percent(frm, cdt, cdn) { calculate_amount(frm, cdt, cdn); },
+//     payment_mode(frm, cdt, cdn) { toggle_payment_fields(frm, cdt, cdn); }
+// });
+
+// function calculate_amount(frm, cdt, cdn) {
+//     let row = locals[cdt][cdn];
+//     if (!row.qty || !row.rate) return;
+
+//     const qty = parseFloat(row.qty);
+//     const rate = parseFloat(row.rate);
+//     const tax = parseFloat(row.tax_percent || 0);
+
+//     row.amount = qty * rate;
+//     row.amount_with_tax = row.amount + (row.amount * tax / 100);
+
+//     frappe.model.set_value(cdt, cdn, "amount", row.amount);
+//     frappe.model.set_value(cdt, cdn, "amount_with_tax", row.amount_with_tax);
+
+//     const total = (frm.doc.case_invoice || []).reduce((acc, r) => acc + parseFloat(r.amount_with_tax || 0), 0);
+//     if (frm.doc.workflow_state !== "Closed") frm.set_value("total_amount", total);
+
+//     // Update Pay Now button after total change
+//     add_pay_now_button(frm);
+// }
+
 
 function calculate_amount(frm, cdt, cdn) {
     let row = locals[cdt][cdn];
@@ -196,24 +224,34 @@ function calculate_amount(frm, cdt, cdn) {
     frappe.model.set_value(cdt, cdn, "amount", row.amount);
     frappe.model.set_value(cdt, cdn, "amount_with_tax", row.amount_with_tax);
 
-    const total = (frm.doc.case_invoice || []).reduce((acc, r) => acc + parseFloat(r.amount_with_tax || 0), 0);
-    if (frm.doc.workflow_state !== "Closed") frm.set_value("total_amount", total);
+    // Sum of all amount_with_tax from child table
+    const invoice_total = (frm.doc.case_invoice || []).reduce((acc, r) => {
+        return acc + parseFloat(r.amount_with_tax || 0);
+    }, 0);
+
+    // Add bail_amount from parent DocType
+    const bail_amount = parseFloat(frm.doc.bail_amount || 0);
+    const grand_total = invoice_total + bail_amount;
+
+    if (frm.doc.workflow_state !== "Closed") {
+        frm.set_value("total_amount", grand_total);
+    }
 
     // Update Pay Now button after total change
     add_pay_now_button(frm);
 }
 
 // ================= Bail Creation =================
-function create_bail_record(frm) {
-    frappe.model.get_new_doc('Bail', null, null, function (bail_doc) {
-        bail_doc.case_id = frm.doc.name;
-        bail_doc.client = frm.doc.client;
-        bail_doc.case_type = frm.doc.case_type;
-        bail_doc.advocate = frm.doc.advocate;
+// function create_bail_record(frm) {
+//     frappe.model.get_new_doc('Bail', null, null, function (bail_doc) {
+//         bail_doc.case_id = frm.doc.name;
+//         bail_doc.client = frm.doc.client;
+//         bail_doc.case_type = frm.doc.case_type;
+//         bail_doc.advocate = frm.doc.advocate;
 
-        frappe.set_route('Form', 'Bail', bail_doc.name);
-    });
-}
+//         frappe.set_route('Form', 'Bail', bail_doc.name);
+//     });
+// }
 
 
 
