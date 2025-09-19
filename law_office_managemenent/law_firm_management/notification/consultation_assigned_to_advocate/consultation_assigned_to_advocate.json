@@ -1,0 +1,27 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Assigned\"",
+ "creation": "2025-09-17 11:42:03.875814",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Client Consultation",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Dear Advocate,</p>\n\n<p>A new consultation has been assigned to you.</p>\n\n<p>Client: {{ doc.client_name }}\nConsultation ID: {{ doc.name }}\nStatus: {{ doc.status }}</p>\n\n<p>Please check the system for more details.</p>\n",
+ "message_type": "Markdown",
+ "modified": "2025-09-17 12:20:29.144784",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Consultation Assigned to Advocate",
+ "owner": "Administrator",
+ "recipients": [
+  {}
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 1,
+ "subject": "New Consultation Assigned: {{ doc.client_name or doc.name }}"
+}

@@ -1,0 +1,35 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2025-09-19 14:34:57.536176",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Client",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Dear {self.client_name or 'Client'},</p><br><br>\n<p>Your profile has been created in our system.<br></p>\n\n<p>You can log in with this email (<b>{{doc.email}}</b>) to view your consultations and documents.<br><br>\nThank you,<br>\nLaw Firm</p>\n\n<p>Please check the system for more details.</p>\n",
+ "message_type": "Markdown",
+ "modified": "2025-09-19 15:12:19.969792",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "Client Notify and Email",
+ "owner": "Administrator",
+ "property_value": "",
+ "recipients": [
+  {
+   "bcc": "doc.email",
+   "cc": "doc.email",
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Client"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Senior Advocate",
+ "sender_email": "advocatesenior6@gmail.com",
+ "set_property_after_alert": "",
+ "subject": "Welcome to Law Firm Portal"
+}

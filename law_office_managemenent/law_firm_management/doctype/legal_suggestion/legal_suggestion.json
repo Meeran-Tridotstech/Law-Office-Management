@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2025-08-31 23:22:44.694167",
+ "creation": "2025-09-19 15:09:43.111626",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -16,22 +16,25 @@
  ],
  "fields": [
   {
+   "fieldname": "legal_suggestion_section",
+   "fieldtype": "Section Break",
+   "label": "Legal Suggestion"
+  },
+  {
    "fieldname": "lawprecedent",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Law/Precedent"
   },
   {
-   "fieldname": "summary",
-   "fieldtype": "Text",
-   "in_list_view": 1,
-   "label": "Summary"
-  },
-  {
    "fieldname": "source_type",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Source Type"
+  },
+  {
+   "fieldname": "column_break_xyxe",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "confidence_score",
@@ -46,17 +49,14 @@
    "label": "Reference Link / ID"
   },
   {
-   "fieldname": "legal_suggestion_section",
-   "fieldtype": "Section Break",
-   "label": "Legal Suggestion"
-  },
-  {
-   "fieldname": "column_break_xyxe",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "summary_section",
    "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "summary",
+   "fieldtype": "Text",
+   "in_list_view": 1,
    "label": "Summary"
   }
  ],
@@ -64,7 +64,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-31 23:25:50.660466",
+ "modified": "2025-09-19 15:09:43.111626",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Legal Suggestion",

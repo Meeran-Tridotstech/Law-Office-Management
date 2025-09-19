@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestLegalSuggestion(FrappeTestCase):
+class TestFields(FrappeTestCase):
 	pass

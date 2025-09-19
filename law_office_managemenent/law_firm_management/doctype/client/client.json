@@ -17,7 +17,6 @@
   "company_name",
   "contact_number",
   "column_break_zwaa",
-  "email",
   "city",
   "state",
   "id_proof_section",
@@ -82,14 +81,6 @@
    "in_list_view": 1,
    "label": "Contact Number",
    "placeholder": "Contact Number"
-  },
-  {
-   "description": "Ex:example@gmail.com",
-   "fieldname": "email",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Email",
-   "placeholder": "Email"
   },
   {
    "fieldname": "address",
@@ -161,7 +152,7 @@
  "image_field": "photo",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-02 11:17:47.547853",
+ "modified": "2025-09-19 15:18:30.831468",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Client",
