@@ -12,20 +12,19 @@ frappe.ui.form.on("Case", {
                     },
                     callback: function (r) {
                         if (r.message) {
-                            frappe.msgprint(`📂 Opening Case Assignment: <b>${r.message}</b>`);
+                            frappe.msgprint(`Opening Case Assignment: <b>${r.message}</b>`);
                             frappe.set_route("Form", "Case Assignment", r.message);
                         } else {
-                            frappe.msgprint("⚠️ Case Assignment not found / created.");
+                            frappe.msgprint("Case Assignment not found.");
                         }
                     }
                 });
-            }, __("Create"));
-
+            }, __("Create Case Assignment"));
         }
     },
 
     case_type: function (frm) {
-        frappe.msgprint(`⚖️ Case Type selected: <b>${frm.doc.case_type || "None"}</b>`);
+        frappe.msgprint(`Case Type selected: <b>${frm.doc.case_type || "None"}</b>`);
 
         const courtOptions = {
             "Civil": ["District Munsif Court", "Subordinate Court"],
@@ -44,7 +43,7 @@ frappe.ui.form.on("Case", {
         if (courtOptions[selected]) {
             frm.set_df_property('typical_court', 'options', courtOptions[selected].join('\n'));
             frm.set_value('typical_court', courtOptions[selected][0]);
-            frappe.msgprint(`🏛️ Default Court set to: <b>${courtOptions[selected][0]}</b>`);
+            frappe.msgprint(`Default Court set to: <b>${courtOptions[selected][0]}</b>`);
         } else {
             frm.set_df_property('typical_court', 'options', '');
             frm.set_value('typical_court', '');
@@ -62,9 +61,10 @@ frappe.ui.form.on("Case", {
             'Constitutional Issues': 'CONST-.YY.-',
             'Other': 'OTH-.YY.-'
         };
+        
         if (series_map[frm.doc.case_type]) {
             frm.set_value('naming_series', series_map[frm.doc.case_type]);
-            frappe.msgprint(`🆔 Naming Series applied: <b>${series_map[frm.doc.case_type]}</b>`);
+            frappe.msgprint(`Naming Series applied: <b>${series_map[frm.doc.case_type]}</b>`);
         }
 
         let court_map = {
@@ -119,7 +119,7 @@ frappe.ui.form.on("Case", {
             frm.set_value('court_name', court_map[frm.doc.case_type].court_name);
             frm.set_value('court_address', court_map[frm.doc.case_type].court_address);
             frm.set_value('court_location', court_map[frm.doc.case_type].court_location);
-            frappe.msgprint(`📌 Court Auto-filled: <b>${court_map[frm.doc.case_type].court_name}</b>`);
+            frappe.msgprint(`Court Auto-filled: <b>${court_map[frm.doc.case_type].court_name}</b>`);
         }
 
         if (frm.doc.case_type) {
@@ -131,7 +131,7 @@ frappe.ui.form.on("Case", {
                     }
                 };
             });
-            frappe.msgprint("👨‍⚖️ Advocate filter applied for specialization.");
+            frappe.msgprint("Advocate filter applied for specialization.");
         }
     }
 });

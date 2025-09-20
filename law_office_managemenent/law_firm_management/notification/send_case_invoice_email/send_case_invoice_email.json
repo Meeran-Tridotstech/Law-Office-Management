@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Closed\"",
+ "creation": "2025-09-20 19:59:14.972831",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Case Details",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "message_type": "Markdown",
+ "modified": "2025-09-20 20:03:47.275817",
+ "modified_by": "Administrator",
+ "module": "Law Firm Management",
+ "name": "send case invoice email",
+ "owner": "Administrator",
+ "recipients": [
+  {}
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Meeran",
+ "sender_email": "meeranf36@gmail.com",
+ "subject": "Dear {{ doc.client }}"
+}

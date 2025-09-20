@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "naming_series:naming_series",
+ "autoname": "naming_series:namings_series",
  "creation": "2025-08-16 22:34:11.984943",
  "description": "Case Details ",
  "doctype": "DocType",
@@ -20,9 +20,9 @@
   "filed_date",
   "opponent_name",
   "advocate",
+  "email",
   "case_description_section",
   "case_summary",
-  "summarize_tab",
   "legal_suggestions_section",
   "legal_suggestions"
  ],
@@ -129,11 +129,6 @@
    "options": "Advocate"
   },
   {
-   "fieldname": "summarize_tab",
-   "fieldtype": "Tab Break",
-   "label": "Summarize"
-  },
-  {
    "fieldname": "legal_suggestions_section",
    "fieldtype": "Section Break",
    "label": "Legal Suggestions"
@@ -149,12 +144,19 @@
    "fieldtype": "Text Editor",
    "in_list_view": 1,
    "label": "Case Description"
+  },
+  {
+   "fetch_from": "advocate.mail_id",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Email"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-31 23:56:41.390153",
+ "modified": "2025-09-20 19:54:49.247797",
  "modified_by": "Administrator",
  "module": "Law Firm Management",
  "name": "Case",
